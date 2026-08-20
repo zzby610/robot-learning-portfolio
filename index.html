@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Biyu Zou | Robot Learning Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --paper: #fff;
+      --ink: #172033;
+      --muted: #5d687a;
+      --line: #d9dfeb;
+      --blue: #2458d4;
+      --green: #0f766e;
+      --shadow: 0 12px 34px rgba(18, 32, 59, .08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 58px 0 30px;
+      background: linear-gradient(180deg, #eef4ff 0%, #f7f8fb 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .cv-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      border: 1px solid var(--blue);
+      border-radius: 6px;
+      color: #fff;
+      background: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .cv-button:hover { text-decoration: none; }
+    .cv-button.is-disabled {
+      color: var(--blue);
+      background: #fff;
+      cursor: not-allowed;
+    }
+
+    .seeking {
+      max-width: 850px;
+      margin: 16px 0 0;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 248, 251, .94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav .wrap {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    nav a {
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    main { padding: 32px 0 70px; }
+    section { scroll-margin-top: 70px; margin-top: 22px; }
+    h2 { margin: 0 0 14px; font-size: 28px; line-height: 1.2; }
+    h3 { margin: 0 0 8px; font-size: 24px; line-height: 1.2; }
+
+    .profile {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card,
+    .project,
+    .support-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .card { padding: 18px; }
+    .card strong { display: block; margin-bottom: 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .project {
+      display: grid;
+      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .project + .project { margin-top: 18px; }
+
+    .role {
+      margin: 0 0 13px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 18px;
+    }
+
+    .chip {
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #34415a;
+      background: #f9fbff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .media {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .media.two {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    video { background: #101827; }
+
+    figcaption {
+      padding: 8px 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      background: #fbfcff;
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 13px 15px;
+      border-left: 4px solid var(--green);
+      background: #f1fbf9;
+      color: #244440;
+      font-size: 14px;
+    }
+
+    .evaluation {
+      margin-top: 12px;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfcff;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .evaluation strong { color: var(--ink); }
+
+    .support {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .support-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 20px;
+      align-items: start;
+    }
+
+    .support-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 760px;
+    }
+
+    .support-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .support-gallery img,
+    .support-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .support-card:last-child .support-gallery img {
+      height: 270px;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      header { padding-top: 44px; }
+      .profile,
+      .project,
+      .support,
+      .support-card,
+      .support-gallery,
+      .media.two {
+        grid-template-columns: 1fr;
+      }
+      .support-gallery img,
+      .support-card img,
+      .support-card:last-child .support-gallery img {
+        height: auto;
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Robot Learning Portfolio</p>
+      <h1>Biyu Zou</h1>
+      <p class="lead">
+        Recent M.Sc. graduate in Machine Learning, Systems and Control from Lund University, focused on
+        vision-language-action policies, robot learning data, diffusion and flow-based action generation,
+        and sim-to-real evaluation for real-world manipulation.
+      </p>
+      <p class="seeking">Seeking PhD and research opportunities in robot learning, vision-language-action policies, world models, and long-horizon robotic manipulation.</p>
+      <div class="contact">
+        <span>Lund, Sweden</span>
+        <span><a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a></span>
+      </div>
+      <div class="header-actions">
+        <a class="cv-button is-disabled" href="#" aria-disabled="true" title="TODO: add latest CV PDF">Download CV (TODO)</a>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Portfolio navigation">
+    <div class="wrap">
+      <a href="#background">Background</a>
+      <a href="#midea">Midea</a>
+      <a href="#hku">HKU</a>
+      <a href="#lund">Lund</a>
+      <a href="#supporting">Supporting</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="background">
+      <h2>Background</h2>
+      <div class="profile">
+        <div class="card">
+          <strong>Research Direction</strong>
+          <p>Adapting VLA policies from benchmark data and teleoperation trajectories to robust real-world manipulation.</p>
+        </div>
+        <div class="card">
+          <strong>Technical Focus</strong>
+          <p>Multi-view robot data, action-token supervision, Flow Matching action heads, RL alignment, and rollout diagnostics.</p>
+        </div>
+        <div class="card">
+          <strong>Evidence</strong>
+          <p>Real-robot demo, HDF5 annotation tooling, LIBERO evaluation, UR5e deployment, and qualitative failure analysis.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="midea">
+      <h2>Midea AI Research Institute - VLA Data and Real-Robot Validation</h2>
+      <article class="project">
+        <div>
+          <h3>Embodied VLA framework for real-world household manipulation</h3>
+          <p class="role">Midea AI Research Institute • Embodied Intelligence Intern • Jun 2025 – Sep 2025</p>
+          <div class="chips">
+            <span class="chip">VLA Policies</span>
+            <span class="chip">Teleoperation</span>
+            <span class="chip">HDF5</span>
+            <span class="chip">Multi-view Vision</span>
+            <span class="chip">DAgger</span>
+          </div>
+          <ul>
+            <li>Co-developed an embodied VLA framework integrating mobile platforms, ARX robotic arms, multi-view cameras, and VR teleoperation for household manipulation.</li>
+            <li>Built a multi-view HDF5 data pipeline aligning RGB observations, language instructions, robot states, and teleoperation trajectories.</li>
+            <li>Fine-tuned PaliGemma-based and pi0-style VLA policies with reasoning-style supervision and stop-gradient training for long-horizon tasks.</li>
+            <li>Implemented DAgger-style online intervention, collecting correction trajectories and improving the real-world task success rate from 65% to 73%.</li>
+          </ul>
+          <div class="evaluation">
+            <strong>Evaluation details:</strong> real-world manipulation rollout setting; no separate trial-count metadata was found in the available project files.
+          </div>
+          <div class="note">
+            Research value: experience with the full robot-learning loop from data collection and policy adaptation to real-robot rollout analysis.
+          </div>
+        </div>
+        <div class="media">
+          <figure>
+            <video src="media/robotdemo.mp4" controls preload="metadata"></video>
+            <figcaption>Real-robot garment manipulation demo from the household-task rollout setup.</figcaption>
+          </figure>
+          <div class="media two">
+            <figure>
+              <img src="media/annotation.png" alt="HDF5 annotation tool">
+              <figcaption>HDF5 trajectory inspection and annotation.</figcaption>
+            </figure>
+            <figure>
+              <img src="media/robot.png" alt="Robot learning setup">
+              <figcaption>Physical robot setup for data collection and rollout.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="hku">
+      <h2>HKU Agentic Intelligence Lab - Diffusion VLA and RL Alignment</h2>
+      <article class="project">
+        <div>
+          <h3>Negative-aware alignment for diffusion/flow-based VLA policies</h3>
+          <p class="role">HKU Agentic Intelligence Lab • Research Assistant • Oct 2025 – Jan 2026</p>
+          <div class="chips">
+            <span class="chip">Diffusion VLA</span>
+            <span class="chip">Flow Matching</span>
+            <span class="chip">RL Alignment</span>
+            <span class="chip">Positive/Negative Rollouts</span>
+            <span class="chip">LIBERO</span>
+          </div>
+          <ul>
+            <li>Independently explored negative-aware RL alignment for diffusion/flow-based VLA policies, motivated by long-horizon continuous-action instability.</li>
+            <li>Integrated a Flow Matching action head into a Diffusion VLM backbone to build a unified diffusion-style VLA policy for continuous robot action prediction.</li>
+            <li>Implemented a dual-velocity positive/negative alignment objective using successful and failed rollout signals, improving the task success rate from 71% to 84% on a LIBERO manipulation setting.</li>
+          </ul>
+          <div class="evaluation">
+            <strong>Evaluation details:</strong> LIBERO manipulation setting; no separate trial-count metadata was found in the available project files.
+          </div>
+          <div class="note">
+            Research value: formulation of an alignment hypothesis, implementation of a training objective, benchmark evaluation, and analysis of action consistency and rollout stability.
+          </div>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="media/discrete-diffusion-naft-workflow.svg" alt="Unified Diffusion VLA via Negative-Aware RL">
+            <figcaption>Method summary for diffusion/flow VLA alignment using positive and negative rollout feedback.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <section id="lund">
+      <h2>Lund Robotics Lab - OpenVLA-style Sim-to-Real Adaptation</h2>
+      <article class="project">
+        <div>
+          <h3>Sim-to-real adaptation of OpenVLA-style action-token policies</h3>
+          <p class="role">Lund Robotics Lab • Project Lead • Feb 2025 – May 2025</p>
+          <div class="chips">
+            <span class="chip">OpenVLA</span>
+            <span class="chip">Magma</span>
+            <span class="chip">Visual Target and Motion Annotations</span>
+            <span class="chip">Action Tokenization</span>
+            <span class="chip">LoRA</span>
+            <span class="chip">UR5e</span>
+          </div>
+          <ul>
+            <li>Conducted a sim-to-real study adapting OpenVLA-style action-token policies from LIBERO simulation data to a UR5e real-robot manipulation setup.</li>
+            <li>Implemented a 256-bin action-tokenization pipeline mapping continuous 7D end-effector commands into discrete tokens, followed by LoRA fine-tuning with LIBERO data and 183 real-robot trajectories.</li>
+            <li>Used Set-of-Mark-style visual target annotations and trajectory-based motion cues to organize action-grounded supervision for downstream adaptation.</li>
+            <li>Deployed the policy through ROS 2 with asynchronous inference, achieving 61% task success and analyzing discretization errors, inference latency, visual shift, and rollout instability.</li>
+          </ul>
+          <div class="evaluation">
+            <strong>Evaluation details:</strong> UR5e real-robot pick-and-place deployment with 183 real-robot fine-tuning trajectories; no separate rollout-count metadata was found in the available project files.
+          </div>
+          <div class="note">
+            Research value: a compact sim-to-real study covering action representation, limited real-robot fine-tuning, deployment constraints, and failure analysis.
+          </div>
+        </div>
+        <div class="media">
+          <figure>
+            <video src="media/Som.mp4" controls preload="metadata"></video>
+            <figcaption>Set-of-Mark-style marking video: visual targets and motion traces used as action-grounded supervision before downstream fine-tuning.</figcaption>
+          </figure>
+          <figure>
+            <img src="media/openvla-failure-analysis.svg" alt="OpenVLA failure analysis">
+            <figcaption>Qualitative diagnostics from UR5e rollouts.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <section id="supporting">
+      <h2>Supporting AI Systems Work</h2>
+      <div class="support">
+        <div class="support-card">
+          <div>
+            <h3>Ericsson - Reliable AI Agent Workflow</h3>
+            <p class="role">Ericsson AB • Master's Thesis Student • Jan 2026 – Jun 2026</p>
+            <p>Router-executor agent with retrieval grounding, tool orchestration, evidence filtering, and human-in-the-loop review.</p>
+          </div>
+          <div class="support-gallery">
+            <img src="media/sparchi.png" alt="Ericsson agent architecture">
+            <img src="media/User_Interface.png" alt="Ericsson agent user interface">
+          </div>
+        </div>
+        <div class="support-card">
+          <div>
+            <h3>XINGTONG - Domain-Specific RAG</h3>
+            <p>Power-domain RAG workflow with chunking, dynamic context windows, terminology filtering, and retrieval-quality improvements.</p>
+          </div>
+          <div class="support-gallery">
+            <img src="media/rag1.png" alt="RAG architecture">
+            <img src="media/rag2.png" alt="RAG demo question">
+            <img src="media/rag3.png" alt="RAG demo retrieval">
+            <img src="media/rag4.png" alt="RAG demo answer">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Biyu Zou – Robot Learning Portfolio – Last updated August 2026
+    </div>
+  </footer>
+</body>
+</html>
