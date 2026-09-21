@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="Biyu Zou's AI engineering portfolio: enterprise agents at Ericsson, domain-specific RAG, human-in-the-loop workflows, and cloud deployment.">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Biyu Zou | AI Agents &amp; Applied AI</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232d51d6'/%3E%3Ctext x='20' y='27' text-anchor='middle' font-family='Arial' font-size='21' fill='white'%3EBZ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/agent-portfolio.css">
+  <script src="assets/agent-portfolio.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="identity" href="#top" aria-label="Biyu Zou, back to top"><span class="monogram" aria-hidden="true">bz.</span><span>Biyu Zou<span class="identity-note">AI engineering portfolio</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Selected work</a><a href="#demos">Demos</a><a href="#engineering">Engineering</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="other-portfolio" href="vla-research-profile.html">Robot learning <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Applied AI · Agents · Retrieval</p>
+        <h1 id="hero-title">AI agents for<br><span>real workflows.</span></h1>
+        <p class="hero-intro">I'm Biyu, an AI developer in Lund, Sweden. I build tool-using assistants, grounded retrieval systems, and the interfaces and cloud deployments that make them usable.</p>
+        <p class="hero-context">Recent work at Ericsson, Xingtong, and Midea.</p>
+        <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="button secondary" href="#demos" data-show-demo="sync">Watch agent demo <span aria-hidden="true">▷</span></a></div>
+        <p class="hero-stack">Python <span>·</span> MCP <span>·</span> LangChain <span>·</span> Docker <span>·</span> Kubernetes <span>·</span> AWS</p>
+      </div>
+      <figure class="hero-preview">
+        <div class="preview-title"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>SP Copilot</span><span class="preview-tag">Ericsson project</span></div>
+        <a href="media/User_Interface.png" data-lightbox data-caption="SP Copilot: Streamlit interface for summaries, risk review, prioritization, and synchronization." class="hero-image-link" aria-label="Enlarge the SP Copilot interface screenshot">
+          <img src="media/User_Interface.png" alt="SP Copilot interface with Confluence and Jira connection status, context tools, and a menu of agent workflows" width="633" height="1000" fetchpriority="high">
+          <span class="image-zoom-hint">View full interface <span aria-hidden="true">↗</span></span>
+        </a>
+        <figcaption><span class="small-dot" aria-hidden="true"></span> Context, tools, and human review in one workspace.</figcaption>
+      </figure>
+    </section>
+
+    <div class="container expertise-strip" aria-label="Areas of experience">
+      <div><span class="index">01</span><span>Agent orchestration</span></div><div><span class="index">02</span><span>Knowledge &amp; retrieval</span></div><div><span class="index">03</span><span>Application delivery</span></div>
+    </div>
+
+    <section class="container section" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><div><p class="eyebrow">Selected work / 01</p><h2 id="work-title">From enterprise knowledge<br>to an actionable assistant.</h2></div><span class="project-label">Ericsson AB · Master's thesis<br>Jan – Jun 2026 · Lund, Sweden</span></div>
+      <article class="featured-project" aria-labelledby="ericsson-title">
+        <div class="project-intro">
+          <div><p class="project-kicker">Enterprise agent application</p><h3 id="ericsson-title">SP Copilot</h3><p class="project-lead">A Python LLM assistant that connects project knowledge and tools to support summaries, risk reviews, prioritization, and synchronization.</p><div class="tags"><span>Python</span><span>ReAct-style orchestration</span><span>MCP</span><span>Streamlit</span><span>Confluence &amp; Jira</span></div></div>
+          <div class="project-problem"><h4>The problem</h4><p>Useful context lives across pages, issues, and planning information. An assistant needs to retrieve the right evidence, choose the right workflow, and keep people in control of changes.</p><h4>My role</h4><p>Agent architecture, context and retrieval logic, enterprise integrations, user interface, deployment, and reliability evaluation.</p></div>
+        </div>
+        <div class="contributions">
+          <div><span class="step-number">01</span><h4>Route &amp; execute</h4><p>Built a custom router-executor architecture with modular skills and on-demand instructions.</p></div>
+          <div><span class="step-number">02</span><h4>Ground the context</h4><p>Integrated Node.js MCP servers, page parsing, terminology grounding, and structured session memory.</p></div>
+          <div><span class="step-number">03</span><h4>Keep people in control</h4><p>Added approval for write operations and fallbacks when the available context was incomplete.</p></div>
+          <div><span class="step-number">04</span><h4>Deliver &amp; evaluate</h4><p>Built the Streamlit interface, deployed on AWS with Docker and Kubernetes, and evaluated with internal users.</p></div>
+        </div>
+      </article>
+
+      <div class="architecture" id="architecture">
+        <div class="figure-heading"><div><p class="eyebrow">Inside the system</p><h3>Context before action.</h3></div><span class="figure-hint">Select the diagram to enlarge <span aria-hidden="true">↗</span></span></div>
+        <figure class="architecture-figure"><a href="media/sparchi.png" data-lightbox data-caption="SP Copilot architecture: Streamlit UI, router and skill executors, conversation state, human review, and enterprise integrations." aria-label="Enlarge SP Copilot architecture"><img src="media/sparchi.png" alt="SP Copilot architecture showing the Streamlit interface, router, conversation state, read-only skills, approved synchronization, data cleaning, MCP integrations, and API fallback" width="1400" height="788" loading="lazy"></a><figcaption>Application architecture: user interface, orchestration, and enterprise data integrations. Synchronization follows an approved write path.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="demo-section section" id="demos" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">See the application</p><h2 id="demo-title">Five workflows. One assistant.</h2></div><p class="section-description">Screenshots and a recorded demo from the project. Select a workflow to explore.</p></div>
+        <div class="demo-tabs" role="tablist" aria-label="Agent workflow demonstrations">
+          <button type="button" id="tab-summary" role="tab" aria-selected="true" aria-controls="panel-summary" data-tab="summary">01 <span>Summary</span></button>
+          <button type="button" id="tab-risk" role="tab" aria-selected="false" aria-controls="panel-risk" tabindex="-1" data-tab="risk">02 <span>Risk review</span></button>
+          <button type="button" id="tab-priority" role="tab" aria-selected="false" aria-controls="panel-priority" tabindex="-1" data-tab="priority">03 <span>Prioritization</span></button>
+          <button type="button" id="tab-wiki" role="tab" aria-selected="false" aria-controls="panel-wiki" tabindex="-1" data-tab="wiki">04 <span>Knowledge lookup</span></button>
+          <button type="button" id="tab-sync" role="tab" aria-selected="false" aria-controls="panel-sync" tabindex="-1" data-tab="sync">05 <span>Sync demo <span aria-hidden="true">▷</span></span></button>
+        </div>
+        <div class="demo-panel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary" tabindex="0">
+          <figure class="demo-media"><a href="media/summary_demo1.png" data-lightbox data-caption="Project summary: document context, milestones, and supporting evidence in the SP Copilot interface." aria-label="Enlarge project summary screenshot"><img src="media/summary_demo1.png" alt="SP Copilot summarizing a project page, including its document overview and milestone progress" width="2557" height="1266" loading="lazy"></a><figcaption>Project status summary · Screenshot · Select to enlarge</figcaption></figure>
+          <div class="demo-copy"><span class="media-type">Screenshot</span><h3>Turn a project page into a usable summary.</h3><p>Bring document context and milestone evidence into a structured response that users can review alongside the source page.</p><dl><dt>Engineering focus</dt><dd>Page parsing, evidence filtering, context assembly, and structured generation.</dd></dl></div>
+        </div>
+        <div class="demo-panel" id="panel-risk" role="tabpanel" aria-labelledby="tab-risk" tabindex="0" hidden>
+          <figure class="demo-media"><a href="media/risk_demo1.png" data-lightbox data-caption="Risk review: milestone health, risk themes, supporting evidence, and recommended follow-up actions." aria-label="Enlarge risk review screenshot"><img src="media/risk_demo1.png" alt="Risk review output with overall milestone health, evidence, risk levels, and recommended actions" width="1608" height="1013" loading="lazy"></a><figcaption>Risk review · Screenshot · Select to enlarge</figcaption></figure>
+          <div class="demo-copy"><span class="media-type">Screenshot</span><h3>Make risks easier to inspect.</h3><p>Organize open concerns into risk themes with evidence and suggested follow-up actions, keeping the underlying context visible.</p><dl><dt>Engineering focus</dt><dd>Domain terminology, evidence grounding, and reviewable output.</dd></dl></div>
+        </div>
+        <div class="demo-panel" id="panel-priority" role="tabpanel" aria-labelledby="tab-priority" tabindex="0" hidden>
+          <figure class="demo-media"><a href="media/priority2.png" data-lightbox data-caption="Jira prioritization: current and recommended priorities with confidence and evidence." aria-label="Enlarge prioritization screenshot"><img src="media/priority2.png" alt="Jira items shown with current and recommended priorities, confidence levels, and supporting explanations" width="1367" height="1072" loading="lazy"></a><figcaption>Jira prioritization · Screenshot · Select to enlarge</figcaption></figure>
+          <div class="demo-copy"><span class="media-type">Screenshot</span><h3>Explain a recommendation.</h3><p>Compare current and recommended priorities, with confidence and supporting evidence so that a user can understand the suggestion.</p><dl><dt>Engineering focus</dt><dd>Issue context, tool integration, and actionable explanations.</dd></dl></div>
+        </div>
+        <div class="demo-panel" id="panel-wiki" role="tabpanel" aria-labelledby="tab-wiki" tabindex="0" hidden>
+          <figure class="demo-media"><a href="media/wiki_demo1.png" data-lightbox data-caption="Domain knowledge lookup combining glossary definitions and local wiki context." aria-label="Enlarge knowledge lookup screenshot"><img src="media/wiki_demo1.png" alt="SP Copilot answering terminology questions using a system glossary and local wiki sources" width="1105" height="935" loading="lazy"></a><figcaption>Domain knowledge lookup · Screenshot · Select to enlarge</figcaption></figure>
+          <div class="demo-copy"><span class="media-type">Screenshot</span><h3>Give domain language its context.</h3><p>Combine glossary definitions and local knowledge to answer terminology questions with a traceable source.</p><dl><dt>Engineering focus</dt><dd>Terminology grounding, retrieval, and source-aware answers.</dd></dl></div>
+        </div>
+        <div class="demo-panel" id="panel-sync" role="tabpanel" aria-labelledby="tab-sync" tabindex="0" hidden>
+          <figure class="demo-media video-figure"><video id="sync-video" controls playsinline preload="none" poster="media/agent-sync-poster.jpg" aria-label="Recorded Jira and Confluence synchronization workflow"><source src="media/sync.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/sync.mp4">Open the MP4 recording.</a></video><figcaption>Jira / Confluence synchronization · 1 min 26 sec · <a href="media/sync.mp4" target="_blank" rel="noopener">Open video ↗</a></figcaption></figure>
+          <div class="demo-copy"><span class="media-type">Recorded demo · 1:26</span><h3>From a request to a reviewed change.</h3><p>A recorded synchronization workflow in the development environment, showing interaction with project pages and Jira items.</p><dl><dt>Engineering focus</dt><dd>Tool orchestration, explicit user input, and human approval for write operations.</dd></dl><p class="quiet">Use the player controls to play, seek, or view fullscreen.</p></div>
+        </div>
+        <noscript><p class="noscript-note">More demos: <a href="media/risk_demo1.png">Risk review</a> · <a href="media/priority2.png">Prioritization</a> · <a href="media/wiki_demo1.png">Knowledge lookup</a> · <a href="media/sync.mp4">Synchronization video</a>.</p></noscript>
+      </div>
+    </section>
+
+    <section class="container section rag-section" id="rag" aria-labelledby="rag-title">
+      <div class="section-heading"><div><p class="eyebrow">Selected work / 02</p><h2 id="rag-title">Domain knowledge,<br>ready for a question.</h2></div><span class="project-label">Xingtong Power Information<br>&amp; Communication Co., Ltd.<br>Algorithm Intern · May – Aug 2024</span></div>
+      <div class="rag-layout">
+        <div class="rag-copy"><p class="project-kicker">Power-domain RAG application</p><h3>Grounded answers for operational data.</h3><p>A Python / LangChain application combining LLMs, domain knowledge, retrieval rules, terminology filtering, and co-occurrence graphs.</p><ul class="clean-list"><li>Optimized chunking with genetic algorithms, dynamic context windows, and paragraph regrouping.</li><li>Improved retrieval ranking and answer grounding for domain-specific questions.</li><li>Contributed the core algorithm submitted for a Chinese invention patent.</li></ul><div class="tags"><span>Python</span><span>LangChain</span><span>RAG</span><span>Document processing</span></div></div>
+        <div class="phone-gallery"><figure><a href="media/rag3.png" data-lightbox data-caption="Power-domain assistant: an operational load query with a chart response." aria-label="Enlarge operational data query screenshot"><img src="media/rag3.png" width="563" height="1000" loading="lazy" alt="Xiangdian Genie mobile interface displaying a load curve in response to a natural-language query"></a><figcaption>Operational data query</figcaption></figure><figure><a href="media/rag4.png" data-lightbox data-caption="Power-domain assistant: domain-specific questions and answers." aria-label="Enlarge domain question-answering screenshot"><img src="media/rag4.png" width="563" height="1000" loading="lazy" alt="Xiangdian Genie answering questions about operating cost, power supply area, and line loss"></a><figcaption>Domain question answering</figcaption></figure></div>
+      </div>
+      <div class="results-strip" aria-label="RAG project results"><div><strong>82<span>→</span>94%</strong><span>Q&amp;A accuracy in project evaluation</span></div><div><strong>10</strong><span>Departments served by the system</span></div><div><strong>~15,000</strong><span>Queries handled per month</span></div></div>
+      <details class="technical-details"><summary>Explore the query flow and domain processing <span class="details-plus" aria-hidden="true">+</span></summary><div class="flow-gallery"><figure><a href="media/rag2.png" data-lightbox data-caption="Power-domain query flow: voice or text input, domain processing, and knowledge or data-based answers." aria-label="Enlarge RAG query-routing diagram"><img src="media/rag2.png" width="1067" height="1000" alt="Flowchart routing voice or text input through word segmentation to knowledge-base or indicator-based answers" loading="lazy"></a><figcaption>Query routing and answer flow</figcaption></figure><figure><a href="media/rag1.png" data-lightbox data-caption="Word-segmentation capability learning pipeline shown in the project materials." aria-label="Enlarge domain word-segmentation diagram"><img src="media/rag1.png" width="1143" height="1000" alt="Word-segmentation capability learning diagram with a dataset and QLoRA fine-tuning" loading="lazy"></a><figcaption>Domain word-segmentation learning pipeline</figcaption></figure></div></details>
+    </section>
+
+    <section class="engineering-section section" id="engineering" aria-labelledby="engineering-title">
+      <div class="container"><div class="section-heading"><div><p class="eyebrow">How I build</p><h2 id="engineering-title">The engineering around the model.</h2></div><p class="section-description">Practical work across the application lifecycle, from input context to deployment and review.</p></div>
+        <div class="engineering-rows">
+          <div><span class="row-number">01</span><h3>Integrations &amp; context</h3><p>Confluence and Jira through MCP; HTML cleaning, page parsing, metadata extraction, query rewriting, and session memory.</p><span class="row-label">Grounded inputs</span></div>
+          <div><span class="row-number">02</span><h3>Interface &amp; deployment</h3><p>Streamlit with streaming responses; Python / Node.js containers, Kubernetes services, TLS ingress, and AWS deployment.</p><span class="row-label">Usable applications</span></div>
+          <div><span class="row-number">03</span><h3>Control &amp; fallbacks</h3><p>Human approval for write operations, on-demand skill instructions, and fallbacks for incomplete or unreliable context.</p><span class="row-label">Reviewable actions</span></div>
+          <div><span class="row-number">04</span><h3>Evaluation &amp; regression</h3><p>Checks for response quality, tool-use correctness, latency, fallback behavior, and retrieval reliability; evaluation with internal users.</p><span class="row-label">Reliable behavior</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section beyond-section" id="background" aria-labelledby="background-title">
+      <div class="section-heading"><div><p class="eyebrow">A broader applied AI foundation</p><h2 id="background-title">Multimodal systems, too.</h2></div><a class="text-link" href="vla-research-profile.html">Explore robot learning work <span aria-hidden="true">↗</span></a></div>
+      <div class="beyond-layout"><div class="beyond-copy"><p>My robotics work adds experience in data pipelines, model adaptation, deployment constraints, and learning from human corrections.</p><div class="mini-project"><h3>Midea AI Research</h3><p>Built a multi-view HDF5 pipeline and deployed VLA policies on ARX arms. Human intervention and corrective demonstrations improved real-world manipulation success from 65% to 73%.</p></div><div class="mini-project"><h3>Lund &amp; HKU research</h3><p>Worked on asynchronous ROS 2 deployment of VLA policies, sim-to-real evaluation, and diffusion-policy alignment using successful and failed rollouts.</p></div></div><figure class="robot-video"><video controls playsinline preload="none" poster="media/robot.png" aria-label="Real-robot garment manipulation demonstration"><source src="media/robotdemo.mp4" type="video/mp4">Your browser cannot play this video. <a href="media/robotdemo.mp4">Open the MP4 recording.</a></video><figcaption>Midea · Real-robot garment manipulation · 1 min 40 sec<br><a href="media/annotation.png" data-lightbox data-caption="HDF5 tool for inspecting and annotating multimodal robot trajectories.">View the data annotation tool ↗</a></figcaption></figure></div>
+      <div class="background-line"><div><span class="eyebrow">Education</span><p>M.Sc. Machine Learning, Systems and Control<br><strong>Lund University</strong></p></div><div><span class="eyebrow">Earlier study</span><p>Intelligent Science and Technology<br><strong>Central South University</strong></p></div><div><span class="eyebrow">Publication</span><p>Co-author, M4Net · <em>Neural Networks</em>, 2025<br><a href="https://doi.org/10.1016/j.neunet.2024.107026" target="_blank" rel="noopener">Read the paper ↗</a></p></div></div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-inner"><div><p class="eyebrow">Let's connect</p><h2 id="contact-title">Interested in my work?</h2><p>I'm looking for early-career opportunities in AI application development and software engineering.</p></div><div class="contact-links"><a class="email-link" href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com <span aria-hidden="true">↗</span></a><div><a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/zzby610" target="_blank" rel="noopener">GitHub ↗</a></div><span>Lund, Sweden</span></div></div></section>
+  </main>
+  <footer class="container site-footer"><span>Biyu Zou · AI Agents &amp; Applied AI</span><a href="#top">Back to top ↑</a></footer>
+
+  <dialog class="lightbox" aria-labelledby="lightbox-caption"><div class="lightbox-toolbar"><span>Project image</span><button type="button" class="lightbox-close" aria-label="Close enlarged image">Close <span aria-hidden="true">×</span></button></div><div class="lightbox-image-wrap"><img id="lightbox-image" alt=""></div><div class="lightbox-footer"><p id="lightbox-caption"></p><a id="lightbox-original" target="_blank" rel="noopener">Open original ↗</a></div></dialog>
+</body>
+</html>
