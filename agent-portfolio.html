@@ -7,7 +7,6 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="description" content="Biyu Zou — AI engineering portfolio featuring agent orchestration, MCP integrations, human-in-the-loop workflows and domain-specific RAG.">
   <title>Biyu Zou | AI Agents & Applied AI</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231a44d8'/%3E%3Cpath d='M11 11h17L12 29h17' fill='none' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
   <style>
     :root { --ink:#152033; --muted:#526077; --blue:#1a44d8; --line:#dce2ed; --paper:#fff; --wash:#f3f6fb; --navy:#111e38; }
     * { box-sizing:border-box; }
@@ -19,27 +18,12 @@
     .wrap { width:min(1160px,calc(100% - 64px)); margin-inline:auto; }
     .skip { position:absolute; left:1rem; top:-6rem; z-index:30; background:white; padding:.7rem 1rem; }
     .skip:focus { top:.5rem; }
-    .topbar { background:rgba(255,255,255,.97); border-bottom:1px solid var(--line); }
-    .topbar .wrap { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding-block:1rem; }
-    .wordmark { display:flex; align-items:center; gap:.75rem; font-weight:750; text-decoration:none; color:var(--ink); }
-    .monogram { display:grid; place-items:center; width:36px; height:36px; background:var(--blue); color:white; border-radius:7px; font-size:.875rem; }
-    nav { display:flex; flex-wrap:wrap; align-items:center; gap:1.5rem; }
-    nav a { color:var(--muted); text-decoration:none; font-size:.875rem; font-weight:600; }
-    nav a:hover { color:var(--blue); }
     .hero { padding:76px 0 62px; display:grid; grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr); gap:4rem; align-items:start; }
     .eyebrow { margin:0 0 1.3rem; color:var(--blue); font-size:.875rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
     h1 { font-size:clamp(3.6rem,7.8vw,6rem); font-weight:700; line-height:1.06; letter-spacing:-.045em; margin:0 0 1.5rem; }
     .lead { margin:0; max-width:700px; color:var(--ink); font-size:clamp(1.4rem,2.3vw,1.8rem); line-height:1.45; letter-spacing:-.025em; }
     .intro { max-width:650px; margin:1.35rem 0 0; color:var(--muted); }
-    .actions { display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.5rem; margin-top:1.8rem; }
-    .button { display:inline-flex; justify-content:center; padding:.8rem 1.1rem; border-radius:5px; background:var(--blue); color:white; font-weight:650; text-decoration:none; font-size:.9375rem; }
-    .button:hover { background:#1234ae; text-decoration:none; }
     .text-link { font-weight:650; font-size:.9375rem; }
-    .profile { border-top:3px solid var(--blue); padding:1.4rem 0 0; margin-top:.15rem; }
-    .profile .label { font-size:.875rem; font-weight:700; color:var(--muted); margin:0 0 .65rem; }
-    .profile h2 { font-size:1.5rem; line-height:1.35; margin:0 0 1.2rem; letter-spacing:-.02em; }
-    .profile p { margin:.7rem 0; color:var(--muted); font-size:.9375rem; }
-    .profile .location { border-top:1px solid var(--line); padding-top:1.1rem; margin-top:1.4rem; color:var(--ink); }
     .focus-strip { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); margin-bottom:64px; }
     .focus-strip div { padding:1.25rem 1.5rem; border-right:1px solid var(--line); }
     .focus-strip div:first-child { padding-left:0; }
@@ -92,18 +76,11 @@
     .experience h3 { font-size:1rem; letter-spacing:0; line-height:1.5; margin:0; }
     .experience p { margin:0; color:var(--muted); font-size:.9375rem; }
     .experience .dates { font-size:.875rem; color:var(--muted); text-align:right; }
-    .research-link { margin:1.4rem 0 0; font-size:.9375rem; }
-    .contact-band { background:var(--navy); color:white; padding:44px 40px; border-radius:10px; margin-bottom:48px; display:flex; flex-wrap:wrap; gap:2rem; align-items:center; justify-content:space-between; }
-    .contact-band h2 { margin:0 0 .6rem; font-size:1.8rem; line-height:1.3; letter-spacing:-.025em; }
-    .contact-band p { color:#c0cde4; margin:0; }
-    .contact-band a { color:white; }
-    .contact-band .contact-links { display:flex; flex-direction:column; align-items:flex-start; gap:.6rem; overflow-wrap:anywhere; }
     footer { padding:24px 0; border-top:1px solid var(--line); color:var(--muted); font-size:.875rem; }
     footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.75rem; }
     @media (max-width:800px) {
       .wrap { width:calc(100% - 40px); }
       .hero { padding:48px 0 36px; gap:2rem; grid-template-columns:1fr; }
-      .profile { display:none; }
       .focus-strip { margin-bottom:40px; }
       .focus-strip div { padding:1rem; }
       .case-head,.case-body { padding:28px; }
@@ -116,10 +93,6 @@
       .experience .dates { grid-column:1/-1; text-align:left; }
     }
     @media (max-width:580px) {
-      .topbar .wrap { gap:1rem; align-items:flex-start; }
-      nav { gap:.75rem 1rem; justify-content:flex-end; max-width:170px; }
-      .wordmark { flex-shrink:0; }
-      .wordmark .name { display:none; }
       h1 { font-size:3.6rem; }
       .hero { padding-top:38px; }
       .focus-strip { grid-template-columns:1fr; }
@@ -138,24 +111,19 @@
       details { padding:1.2rem 20px; }
       .more-media figure:last-child { max-width:245px; justify-self:center; }
       .experience { grid-template-columns:1fr; }
-      .contact-band { padding:28px 24px; }
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
     @media print {
-      .topbar, .skip, .actions, footer { display:none; }
+      .skip, footer { display:none; }
       .wrap { width:100%; }
       .hero { padding:20px 0; }
-      .case,.contact-band { break-inside:avoid; }
-      .feature-stage,.contact-band { background:white; color:var(--ink); border:1px solid var(--line); }
-      .feature-stage figcaption,.contact-band p,.contact-band a { color:var(--ink); }
+      .case { break-inside:avoid; }
+      .feature-stage { background:white; color:var(--ink); border:1px solid var(--line); }
+      .feature-stage figcaption { color:var(--ink); }
       a { color:var(--ink); }
     }
 
     /* Project evidence: visible galleries and compact robotics case studies. */
-    .agent-flow-panel { padding:0 40px 34px; }
-    .diagram-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--wash); }
-    .diagram-scroll:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
-    .agent-flow { display:block; width:100%; min-width:720px; height:auto; }
     .rag-evidence { padding:0 40px 38px; }
     .rag-diagrams,.rag-outputs,.rag-explanation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
     .rag-diagrams figure,.rag-outputs figure { border:1px solid var(--line); border-radius:8px; padding:18px; background:var(--wash); }
@@ -181,34 +149,47 @@
     .robot-media video { display:block; width:100%; aspect-ratio:16/9; object-fit:contain; background:#111e38; border-radius:6px; }
     .robot-demo-link { margin:20px 0 0; font-size:.9375rem; }
     @media (max-width:800px) {
-      .agent-flow-panel,.rag-evidence { padding-inline:28px; }
+      .rag-evidence { padding-inline:28px; }
       .rag-diagrams img { height:290px; }
       .midea-media img { height:250px; }
     }
     @media (max-width:580px) {
-      .agent-flow-panel,.rag-evidence { padding-inline:20px; }
+      .rag-evidence { padding-inline:20px; }
       .rag-diagrams,.rag-outputs,.rag-explanation,.midea-media,.lund-media { grid-template-columns:1fr; }
       .rag-diagrams figure,.rag-outputs figure { padding:14px; }
       .rag-diagrams img { height:auto; max-height:440px; }
       .robot-project { padding:20px; }
       .midea-media img { height:auto; max-height:350px; }
       .robot-photo { max-width:280px; margin-inline:auto; }
-      .agent-flow-panel { padding-bottom:24px; }
+    }
+
+    .hero { grid-template-columns:minmax(0,1fr); padding-top:58px; }
+    .intro { max-width:800px; }
+    .contact-inline { display:flex; flex-wrap:wrap; align-items:center; gap:10px 24px; margin-top:24px; color:var(--muted); font-size:.9375rem; }
+    .contact-inline a { font-weight:550; overflow-wrap:anywhere; }
+    .contact-section { padding:28px 0 42px; border-top:1px solid var(--line); }
+    .contact-section h2 { margin:0; font-size:1.5rem; }
+    .ericsson-demos { padding:0 40px 40px; }
+    .demos-heading { font-size:1.4rem; margin-bottom:22px; }
+    .demo-gallery { display:grid; gap:32px; }
+    .demo-figure { padding:22px; border:1px solid var(--line); border-radius:8px; background:var(--wash); }
+    .demo-figure figcaption { margin:0 0 16px; }
+    .demo-figure h5 { margin:0 0 6px; font-size:1.125rem; color:var(--ink); }
+    .demo-figure p { margin:0; font-size:.9375rem; }
+    .demo-figure .image-link { border:1px solid var(--line); }
+    .demo-figure img { width:100%; height:auto; }
+    .lund-media { grid-template-columns:minmax(0,1fr); max-width:820px; }
+    @media (max-width:800px) { .ericsson-demos { padding:0 28px 28px; } }
+    @media (max-width:580px) {
+      .hero { padding-top:36px; }
+      .contact-inline { gap:10px 18px; }
+      .ericsson-demos { padding:0 20px 24px; }
+      .demo-figure { padding:14px; }
     }
   </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="wrap">
-      <a class="wordmark" href="#main" aria-label="Biyu Zou, back to top"><span class="monogram" aria-hidden="true">BZ</span><span class="name">Biyu Zou</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#selected-work">Selected work</a>
-        <a href="#background">Background</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
   <main id="main" class="wrap">
     <section class="hero" aria-labelledby="page-title">
       <div>
@@ -216,18 +197,12 @@
         <h1 id="page-title">Biyu Zou</h1>
         <p class="lead">Agent orchestration, grounded retrieval,<br>and human-in-the-loop workflows.</p>
         <p class="intro">M.Sc. graduate in Machine Learning, Systems and Control from Lund University, with experience in enterprise agent workflows, domain-specific RAG and robot learning.</p>
-        <div class="actions">
-          <a class="button" href="#selected-work">Explore my work</a>
-          <a class="text-link" href="mailto:zbyblanche610@gmail.com">Get in touch</a>
+        <div class="contact-inline" aria-label="Contact details">
+          <span>Lund, Sweden</span>
+          <a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a>
+          <a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a>
         </div>
       </div>
-      <aside class="profile" aria-label="Career focus">
-        <p class="label">LOOKING AHEAD</p>
-        <h2>AI Agent Engineer<br>Applied AI Engineer</h2>
-        <p>Interested in building useful AI applications that connect models, tools and people.</p>
-        <p class="location">Based in Lund, Sweden</p>
-        <a class="text-link" href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn profile</a>
-      </aside>
     </section>
 
     <div class="focus-strip" aria-label="Areas of experience">
@@ -283,44 +258,28 @@
           </figure>
         </div>
 
-        <div class="agent-flow-panel">
-          <h4>From a request to a reviewed action</h4>
-          <figure>
-            <div class="diagram-scroll" tabindex="0" role="region" aria-label="Agent workflow diagram; scroll horizontally on narrow screens">
-              <svg class="agent-flow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 370" role="img" aria-labelledby="agent-flow-title agent-flow-desc">
-                <title id="agent-flow-title">SP Copilot: read and write workflows</title>
-                <desc id="agent-flow-desc">A request enters through Streamlit and reaches the router. Read-only skills produce analysis. Write operations are routed through human review before synchronization.</desc>
-                <defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#65758f"/></marker></defs>
-                <g fill="none" stroke="#65758f" stroke-width="2.5" marker-end="url(#flow-arrow)">
-                  <path d="M228 99H279"/><path d="M478 99H549"/><path d="M778 99H829"/>
-                  <path d="M378 145V266H549"/><path d="M778 266H829"/>
-                </g>
-                <rect x="28" y="54" width="200" height="91" rx="10" fill="#fff" stroke="#ccd6e7"/>
-                <rect x="279" y="54" width="199" height="91" rx="10" fill="#1a44d8"/>
-                <rect x="549" y="32" width="229" height="136" rx="10" fill="#fff" stroke="#ccd6e7"/>
-                <rect x="829" y="54" width="163" height="91" rx="10" fill="#fff" stroke="#ccd6e7"/>
-                <rect x="549" y="221" width="229" height="91" rx="10" fill="#fff" stroke="#ccd6e7"/>
-                <rect x="829" y="221" width="163" height="91" rx="10" fill="#e6f3ed" stroke="#9cc6b1"/>
-                <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#152033">
-                  <text x="128" y="89" font-size="21" font-weight="700">User request</text>
-                  <text x="128" y="120" font-size="18" fill="#526077">Streamlit UI</text>
-                  <text x="378" y="92" font-size="22" font-weight="700" fill="#fff">Router</text>
-                  <text x="378" y="121" font-size="18" fill="#e0e7ff">Select a skill</text>
-                  <text x="663" y="65" font-size="21" font-weight="700">Read-only skills</text>
-                  <text x="663" y="99" font-size="18" fill="#526077">Wiki · Summary</text>
-                  <text x="663" y="128" font-size="18" fill="#526077">Risk · Priority</text>
-                  <text x="910" y="92" font-size="21" font-weight="700">Response</text>
-                  <text x="910" y="121" font-size="18" fill="#526077">Analysis</text>
-                  <text x="449" y="207" font-size="17" fill="#526077">Write operation</text>
-                  <text x="663" y="255" font-size="21" font-weight="700">Human review</text>
-                  <text x="663" y="286" font-size="18" fill="#526077">Approval required</text>
-                  <text x="910" y="255" font-size="21" font-weight="700">Sync</text>
-                  <text x="910" y="286" font-size="18" fill="#526077">Approved write</text>
-                </g>
-              </svg>
-            </div>
-            <figcaption>Workflow overview based on the project architecture: analysis uses read-only skills; synchronization requires human approval.</figcaption>
-          </figure>
+        <div class="ericsson-demos">
+          <h4 class="demos-heading">Project demos</h4>
+          <div class="demo-gallery">
+            <figure class="demo-figure">
+              <figcaption><h5>Wiki demo</h5><p>Terminology questions answered using system glossary definitions and local wiki references.</p></figcaption>
+              <a class="image-link" href="media/wiki_demo1.png" target="_blank" rel="noopener" aria-label="Open Wiki demo screenshot at full size">
+                <img src="media/wiki_demo1.png" width="1105" height="935" loading="lazy" alt="SP Copilot answering terminology questions and identifying glossary and local wiki sources.">
+              </a>
+            </figure>
+            <figure class="demo-figure">
+              <figcaption><h5>Risk demo</h5><p>Milestone status and risk themes, with supporting evidence and recommended actions.</p></figcaption>
+              <a class="image-link" href="media/risk_demo1.png" target="_blank" rel="noopener" aria-label="Open Risk demo screenshot at full size">
+                <img src="media/risk_demo1.png" width="1608" height="1013" loading="lazy" alt="SP Copilot risk review showing milestone health, risk levels, supporting evidence and recommended actions.">
+              </a>
+            </figure>
+            <figure class="demo-figure">
+              <figcaption><h5>Priority demo</h5><p>Current and recommended Jira priorities, accompanied by confidence levels and a short justification.</p></figcaption>
+              <a class="image-link" href="media/priority2.png" target="_blank" rel="noopener" aria-label="Open Priority demo screenshot at full size">
+                <img src="media/priority2.png" width="1367" height="1072" loading="lazy" alt="SP Copilot showing current and recommended Jira priorities, confidence levels and task-status evidence.">
+              </a>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -380,14 +339,6 @@
       <div class="robot-projects">
         <article class="robot-project">
           <div class="robot-intro"><div><p class="case-meta">HKU Agentic Intelligence Lab · Research Assistant · Oct 2025 – Jan 2026</p><h3>Learning from successful and failed robot rollouts</h3><p>Explored negative-aware RL alignment for diffusion and flow-based VLA policies, using rollout feedback to study action consistency and policy behavior.</p></div></div>
-          <div class="robot-media single">
-<figure class="">
-      <a class="image-link" href="media/discrete-diffusion-naft-workflow.svg" target="_blank" rel="noopener" aria-label="Open image at full size: Diffusion VLA and negative-aware alignment research workflow">
-        <img src="media/discrete-diffusion-naft-workflow.svg" width="1600" height="900" loading="lazy" alt="Diffusion VLA and negative-aware alignment research workflow">
-      </a>
-      <figcaption>Original method overview: policy architecture, positive and negative rollout feedback, and alignment.</figcaption>
-    </figure>
-          </div>
         </article>
         <article class="robot-project">
           <div class="robot-intro"><div><p class="case-meta">Midea AI Research Institute · Embodied Intelligence Intern · Jun – Sep 2025</p><h3>Real-robot data collection and human intervention</h3><p>Built a multi-view HDF5 data pipeline and worked on VLA policy adaptation and DAgger-style human intervention for household manipulation.</p></div></div>
@@ -405,30 +356,22 @@
       <figcaption>Trajectory inspection and annotation across synchronized camera views.</figcaption>
     </figure>
           </div>
-          <p class="robot-demo-link"><a href="media/robotdemo.mp4" target="_blank" rel="noopener">Watch the real-robot garment manipulation demo</a></p>
+          <p class="robot-demo-link"><a href="media/robotdemo.mp4" target="_blank" rel="noopener">Garment manipulation demo (video)</a></p>
         </article>
         <article class="robot-project">
           <div class="robot-intro"><div><p class="case-meta">Lund Robotics Lab · Project Lead · Feb – May 2025</p><h3>OpenVLA-style adaptation and rollout diagnostics</h3><p>Adapted OpenVLA-style policies for a UR5e setup, including action tokenization, LoRA fine-tuning, ROS 2 deployment and rollout failure analysis.</p></div></div>
           <div class="robot-media lund-media">
-<figure class="">
-      <a class="image-link" href="media/openvla-failure-analysis.svg" target="_blank" rel="noopener" aria-label="Open image at full size: UR5e rollout diagnostics covering discretization, latency, visual shift and instability">
-        <img src="media/openvla-failure-analysis.svg" width="1600" height="900" loading="lazy" alt="UR5e rollout diagnostics covering discretization, latency, visual shift and instability">
-      </a>
-      <figcaption>Qualitative failure analysis from real-robot adaptation.</figcaption>
-    </figure>
+
             <figure><video controls playsinline preload="metadata" aria-label="Set-of-Mark visual target and motion annotation demonstration" src="media/Som.mp4">Your browser does not support embedded video. <a href="media/Som.mp4">Open the demonstration video</a>.</video><figcaption>Set-of-Mark-style visual targets and motion traces used as action-grounded supervision.</figcaption></figure>
           </div>
         </article>
       </div>
-      <p class="research-link"><a href="vla-research-profile.html">Explore the robot-learning portfolio and demos</a></p>
     </section>
 
-    <section id="contact" class="contact-band" aria-labelledby="contact-title">
-      <div>
-        <h2 id="contact-title">Let’s build useful AI systems.</h2>
-        <p>Seeking AI Agent Engineer and Applied AI Engineer roles.<br>Lund, Sweden</p>
-      </div>
-      <div class="contact-links">
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="contact-inline">
+        <span>Lund, Sweden</span>
         <a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a>
         <a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a>
       </div>
