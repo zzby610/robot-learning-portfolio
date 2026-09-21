@@ -150,6 +150,51 @@
       .feature-stage figcaption,.contact-band p,.contact-band a { color:var(--ink); }
       a { color:var(--ink); }
     }
+
+    /* Project evidence: visible galleries and compact robotics case studies. */
+    .agent-flow-panel { padding:0 40px 34px; }
+    .diagram-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--wash); }
+    .diagram-scroll:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    .agent-flow { display:block; width:100%; min-width:720px; height:auto; }
+    .rag-evidence { padding:0 40px 38px; }
+    .rag-diagrams,.rag-outputs,.rag-explanation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .rag-diagrams figure,.rag-outputs figure { border:1px solid var(--line); border-radius:8px; padding:18px; background:var(--wash); }
+    .rag-diagrams img { height:390px; object-fit:contain; }
+    .rag-outputs .image-link { width:min(100%,310px); margin-inline:auto; border:1px solid var(--line); }
+    .rag-outputs figcaption { max-width:340px; margin-inline:auto; }
+    .rag-explanation { margin:30px 0; }
+    .rag-explanation p { margin:0; color:var(--muted); }
+    .robot-projects { display:grid; gap:24px; }
+    .robot-project { padding:28px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .robot-intro h3 { font-size:1.5rem; line-height:1.35; letter-spacing:-.02em; }
+    .robot-intro p { color:var(--muted); margin:0 0 12px; }
+    .robot-intro .case-meta { font-size:.875rem; }
+    .robot-media { display:grid; gap:22px; margin-top:22px; }
+    .robot-media.single { max-width:900px; }
+    .robot-media.single img { max-height:420px; object-fit:contain; }
+    .robot-media .image-link { border:1px solid var(--line); }
+    .midea-media { grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr); }
+    .midea-media img { height:310px; object-fit:contain; }
+    .lund-media { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .lund-media .image-link { aspect-ratio:16/9; }
+    .lund-media img { height:100%; object-fit:contain; }
+    .robot-media video { display:block; width:100%; aspect-ratio:16/9; object-fit:contain; background:#111e38; border-radius:6px; }
+    .robot-demo-link { margin:20px 0 0; font-size:.9375rem; }
+    @media (max-width:800px) {
+      .agent-flow-panel,.rag-evidence { padding-inline:28px; }
+      .rag-diagrams img { height:290px; }
+      .midea-media img { height:250px; }
+    }
+    @media (max-width:580px) {
+      .agent-flow-panel,.rag-evidence { padding-inline:20px; }
+      .rag-diagrams,.rag-outputs,.rag-explanation,.midea-media,.lund-media { grid-template-columns:1fr; }
+      .rag-diagrams figure,.rag-outputs figure { padding:14px; }
+      .rag-diagrams img { height:auto; max-height:440px; }
+      .robot-project { padding:20px; }
+      .midea-media img { height:auto; max-height:350px; }
+      .robot-photo { max-width:280px; margin-inline:auto; }
+      .agent-flow-panel { padding-bottom:24px; }
+    }
   </style>
 </head>
 <body>
@@ -237,6 +282,46 @@
             <figcaption>SP Copilot interface and task controls.</figcaption>
           </figure>
         </div>
+
+        <div class="agent-flow-panel">
+          <h4>From a request to a reviewed action</h4>
+          <figure>
+            <div class="diagram-scroll" tabindex="0" role="region" aria-label="Agent workflow diagram; scroll horizontally on narrow screens">
+              <svg class="agent-flow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 370" role="img" aria-labelledby="agent-flow-title agent-flow-desc">
+                <title id="agent-flow-title">SP Copilot: read and write workflows</title>
+                <desc id="agent-flow-desc">A request enters through Streamlit and reaches the router. Read-only skills produce analysis. Write operations are routed through human review before synchronization.</desc>
+                <defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#65758f"/></marker></defs>
+                <g fill="none" stroke="#65758f" stroke-width="2.5" marker-end="url(#flow-arrow)">
+                  <path d="M228 99H279"/><path d="M478 99H549"/><path d="M778 99H829"/>
+                  <path d="M378 145V266H549"/><path d="M778 266H829"/>
+                </g>
+                <rect x="28" y="54" width="200" height="91" rx="10" fill="#fff" stroke="#ccd6e7"/>
+                <rect x="279" y="54" width="199" height="91" rx="10" fill="#1a44d8"/>
+                <rect x="549" y="32" width="229" height="136" rx="10" fill="#fff" stroke="#ccd6e7"/>
+                <rect x="829" y="54" width="163" height="91" rx="10" fill="#fff" stroke="#ccd6e7"/>
+                <rect x="549" y="221" width="229" height="91" rx="10" fill="#fff" stroke="#ccd6e7"/>
+                <rect x="829" y="221" width="163" height="91" rx="10" fill="#e6f3ed" stroke="#9cc6b1"/>
+                <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#152033">
+                  <text x="128" y="89" font-size="21" font-weight="700">User request</text>
+                  <text x="128" y="120" font-size="18" fill="#526077">Streamlit UI</text>
+                  <text x="378" y="92" font-size="22" font-weight="700" fill="#fff">Router</text>
+                  <text x="378" y="121" font-size="18" fill="#e0e7ff">Select a skill</text>
+                  <text x="663" y="65" font-size="21" font-weight="700">Read-only skills</text>
+                  <text x="663" y="99" font-size="18" fill="#526077">Wiki · Summary</text>
+                  <text x="663" y="128" font-size="18" fill="#526077">Risk · Priority</text>
+                  <text x="910" y="92" font-size="21" font-weight="700">Response</text>
+                  <text x="910" y="121" font-size="18" fill="#526077">Analysis</text>
+                  <text x="449" y="207" font-size="17" fill="#526077">Write operation</text>
+                  <text x="663" y="255" font-size="21" font-weight="700">Human review</text>
+                  <text x="663" y="286" font-size="18" fill="#526077">Approval required</text>
+                  <text x="910" y="255" font-size="21" font-weight="700">Sync</text>
+                  <text x="910" y="286" font-size="18" fill="#526077">Approved write</text>
+                </g>
+              </svg>
+            </div>
+            <figcaption>Workflow overview based on the project architecture: analysis uses read-only skills; synchronization requires human approval.</figcaption>
+          </figure>
+        </div>
       </article>
 
       <article class="case" aria-labelledby="rag-title">
@@ -248,49 +333,42 @@
             <li>Retrieval-augmented generation</li><li>Domain terminology</li><li>Context selection</li><li>Conversational interface</li>
           </ul>
         </div>
-        <div class="rag-main">
-          <figure class="diagram">
-            <a class="image-link" href="media/rag2.png" target="_blank" rel="noopener" aria-label="Open the power-domain assistant workflow at full size">
-              <img src="media/rag2.png" width="1067" height="1000" loading="lazy" alt="Power-domain assistant workflow routing voice or text input through segmentation to knowledge-base answers or indicator-database queries.">
-            </a>
-            <figcaption>Query processing and routing between knowledge answers and indicator data.</figcaption>
-          </figure>
-          <figure class="phone">
-            <a class="image-link" href="media/rag3.png" target="_blank" rel="noopener" aria-label="Open the load-curve demonstration at full size">
-              <img src="media/rag3.png" width="563" height="1000" loading="lazy" alt="Xiangdian Genie answering a load-status question with a chart in its mobile interface.">
-            </a>
-            <figcaption>Example interaction: a load-status query returns a visual result.</figcaption>
-          </figure>
-        </div>
-        <div class="rag-copy">
-          <div class="columns">
-            <div>
-              <h4>Retrieval and domain context</h4>
-              <p>Worked on how domain information is chunked, filtered and selected as context, with attention to specialist terminology and retrieval quality.</p>
-            </div>
-            <div>
-              <h4>From a question to a useful response</h4>
-              <p>The project materials show distinct paths for knowledge-base questions and indicator queries. The interface presents both textual answers and data visualizations.</p>
-            </div>
+        <div class="rag-evidence">
+          <h4>How it works</h4>
+          <div class="rag-diagrams">
+<figure class="">
+      <a class="image-link" href="media/rag1.png" target="_blank" rel="noopener" aria-label="Open image at full size: Word-segmentation learning through QLoRA fine-tuning">
+        <img src="media/rag1.png" width="1143" height="1000" loading="lazy" alt="Word-segmentation learning through QLoRA fine-tuning">
+      </a>
+      <figcaption>01 / Domain terminology — word-segmentation capability learning.</figcaption>
+    </figure>
+<figure class="">
+      <a class="image-link" href="media/rag2.png" target="_blank" rel="noopener" aria-label="Open image at full size: Power-domain query-processing and routing workflow">
+        <img src="media/rag2.png" width="1067" height="1000" loading="lazy" alt="Power-domain query-processing and routing workflow">
+      </a>
+      <figcaption>02 / Query workflow — knowledge answers and indicator-data queries.</figcaption>
+    </figure>
+          </div>
+          <div class="rag-explanation">
+            <div><h4>Retrieval and domain context</h4><p>Worked on how domain information is chunked, filtered and selected as context, with attention to specialist terminology and retrieval quality.</p></div>
+            <div><h4>From a question to a useful response</h4><p>The project materials show distinct paths for knowledge-base questions and indicator queries. The interface presents both textual answers and data visualizations.</p></div>
+          </div>
+          <h4>Example outputs</h4>
+          <div class="rag-outputs">
+<figure class="">
+      <a class="image-link" href="media/rag3.png" target="_blank" rel="noopener" aria-label="Open image at full size: Xiangdian Genie answering a load-status question with a chart">
+        <img src="media/rag3.png" width="563" height="1000" loading="lazy" alt="Xiangdian Genie answering a load-status question with a chart">
+      </a>
+      <figcaption>03 / Visual answer — a load-status query returns a chart.</figcaption>
+    </figure>
+<figure class="">
+      <a class="image-link" href="media/rag4.png" target="_blank" rel="noopener" aria-label="Open image at full size: Mobile assistant answering operating-cost, supply-area and line-loss questions">
+        <img src="media/rag4.png" width="563" height="1000" loading="lazy" alt="Mobile assistant answering operating-cost, supply-area and line-loss questions">
+      </a>
+      <figcaption>04 / Indicator answers — domain-specific questions in a conversational interface.</figcaption>
+    </figure>
           </div>
         </div>
-        <details>
-          <summary>More project evidence: terminology learning & example answers</summary>
-          <div class="more-media">
-            <figure>
-              <a class="image-link" href="media/rag1.png" target="_blank" rel="noopener" aria-label="Open the terminology-learning diagram at full size">
-                <img src="media/rag1.png" width="1143" height="1000" loading="lazy" alt="Diagram of word-segmentation capability learning through QLoRA fine-tuning.">
-              </a>
-              <figcaption>Word-segmentation capability learning shown in the project materials.</figcaption>
-            </figure>
-            <figure>
-              <a class="image-link" href="media/rag4.png" target="_blank" rel="noopener" aria-label="Open the indicator-answer examples at full size">
-                <img src="media/rag4.png" width="563" height="1000" loading="lazy" alt="Mobile assistant example with answers to operating-cost, supply-area and line-loss queries.">
-              </a>
-              <figcaption>Examples of domain-specific indicator answers.</figcaption>
-            </figure>
-          </div>
-        </details>
       </article>
     </section>
 
@@ -299,21 +377,47 @@
         <h2 id="background-title">A foundation in applied machine learning</h2>
         <p>Additional research & engineering experience</p>
       </div>
-      <div class="experience-list">
-        <article class="experience">
-          <h3>HKU Agentic<br>Intelligence Lab</h3>
-          <p><strong>Research Assistant.</strong> Explored negative-aware RL alignment for diffusion and flow-based VLA policies, using successful and failed rollouts to study action consistency and policy behavior.</p>
-          <span class="dates">Oct 2025 – Jan 2026</span>
+      <div class="robot-projects">
+        <article class="robot-project">
+          <div class="robot-intro"><div><p class="case-meta">HKU Agentic Intelligence Lab · Research Assistant · Oct 2025 – Jan 2026</p><h3>Learning from successful and failed robot rollouts</h3><p>Explored negative-aware RL alignment for diffusion and flow-based VLA policies, using rollout feedback to study action consistency and policy behavior.</p></div></div>
+          <div class="robot-media single">
+<figure class="">
+      <a class="image-link" href="media/discrete-diffusion-naft-workflow.svg" target="_blank" rel="noopener" aria-label="Open image at full size: Diffusion VLA and negative-aware alignment research workflow">
+        <img src="media/discrete-diffusion-naft-workflow.svg" width="1600" height="900" loading="lazy" alt="Diffusion VLA and negative-aware alignment research workflow">
+      </a>
+      <figcaption>Original method overview: policy architecture, positive and negative rollout feedback, and alignment.</figcaption>
+    </figure>
+          </div>
         </article>
-        <article class="experience">
-          <h3>Midea AI<br>Research Institute</h3>
-          <p><strong>Embodied Intelligence Intern.</strong> Built a multi-view HDF5 data pipeline and worked on VLA policy adaptation and DAgger-style human intervention for real-robot tasks.</p>
-          <span class="dates">Jun – Sep 2025</span>
+        <article class="robot-project">
+          <div class="robot-intro"><div><p class="case-meta">Midea AI Research Institute · Embodied Intelligence Intern · Jun – Sep 2025</p><h3>Real-robot data collection and human intervention</h3><p>Built a multi-view HDF5 data pipeline and worked on VLA policy adaptation and DAgger-style human intervention for household manipulation.</p></div></div>
+          <div class="robot-media midea-media">
+<figure class="robot-photo">
+      <a class="image-link" href="media/robot.png" target="_blank" rel="noopener" aria-label="Open image at full size: Mobile robot and arm setup for data collection and household manipulation">
+        <img src="media/robot.png" width="778" height="1000" loading="lazy" alt="Mobile robot and arm setup for data collection and household manipulation">
+      </a>
+      <figcaption>Physical robot setup for data collection and policy rollouts.</figcaption>
+    </figure>
+<figure class="">
+      <a class="image-link" href="media/annotation.png" target="_blank" rel="noopener" aria-label="Open image at full size: HDF5 visualization and annotation tool with three camera views">
+        <img src="media/annotation.png" width="1400" height="975" loading="lazy" alt="HDF5 visualization and annotation tool with three camera views">
+      </a>
+      <figcaption>Trajectory inspection and annotation across synchronized camera views.</figcaption>
+    </figure>
+          </div>
+          <p class="robot-demo-link"><a href="media/robotdemo.mp4" target="_blank" rel="noopener">Watch the real-robot garment manipulation demo</a></p>
         </article>
-        <article class="experience">
-          <h3>Lund Robotics Lab</h3>
-          <p><strong>Project Lead.</strong> Adapted OpenVLA-style policies for a UR5e setup, including action tokenization, LoRA fine-tuning, ROS 2 deployment and rollout failure analysis.</p>
-          <span class="dates">Feb – May 2025</span>
+        <article class="robot-project">
+          <div class="robot-intro"><div><p class="case-meta">Lund Robotics Lab · Project Lead · Feb – May 2025</p><h3>OpenVLA-style adaptation and rollout diagnostics</h3><p>Adapted OpenVLA-style policies for a UR5e setup, including action tokenization, LoRA fine-tuning, ROS 2 deployment and rollout failure analysis.</p></div></div>
+          <div class="robot-media lund-media">
+<figure class="">
+      <a class="image-link" href="media/openvla-failure-analysis.svg" target="_blank" rel="noopener" aria-label="Open image at full size: UR5e rollout diagnostics covering discretization, latency, visual shift and instability">
+        <img src="media/openvla-failure-analysis.svg" width="1600" height="900" loading="lazy" alt="UR5e rollout diagnostics covering discretization, latency, visual shift and instability">
+      </a>
+      <figcaption>Qualitative failure analysis from real-robot adaptation.</figcaption>
+    </figure>
+            <figure><video controls playsinline preload="metadata" aria-label="Set-of-Mark visual target and motion annotation demonstration" src="media/Som.mp4">Your browser does not support embedded video. <a href="media/Som.mp4">Open the demonstration video</a>.</video><figcaption>Set-of-Mark-style visual targets and motion traces used as action-grounded supervision.</figcaption></figure>
+          </div>
         </article>
       </div>
       <p class="research-link"><a href="vla-research-profile.html">Explore the robot-learning portfolio and demos</a></p>
@@ -333,3 +437,4 @@
   <footer><div class="wrap"><span>Biyu Zou · AI Agents & Applied AI</span><span>September 2026</span></div></footer>
 </body>
 </html>
+
