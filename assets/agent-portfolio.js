@@ -1,42 +1,6 @@
 (() => {
   'use strict';
 
-  const tabs = [...document.querySelectorAll('[data-tab]')];
-  const panels = [...document.querySelectorAll('.demo-panel')];
-  function showTab(name, focus = false) {
-    const active = tabs.find(tab => tab.dataset.tab === name);
-    if (!active) return;
-    tabs.forEach(tab => {
-      const selected = tab === active;
-      tab.setAttribute('aria-selected', String(selected));
-      tab.tabIndex = selected ? 0 : -1;
-    });
-    panels.forEach(panel => {
-      const selected = panel.id === `panel-${name}`;
-      if (!selected) panel.querySelectorAll('video').forEach(video => video.pause());
-      panel.hidden = !selected;
-    });
-    if (focus) active.focus();
-  }
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => showTab(tab.dataset.tab));
-    tab.addEventListener('keydown', event => {
-      let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-      else if (event.key === 'Home') next = 0;
-      else if (event.key === 'End') next = tabs.length - 1;
-      else return;
-      event.preventDefault();
-      showTab(tabs[next].dataset.tab, true);
-    });
-  });
-
-  document.querySelectorAll('[data-show-demo]').forEach(link => {
-    link.addEventListener('click', () => showTab(link.dataset.showDemo));
-  });
-
   const dialog = document.querySelector('.lightbox');
   const dialogImage = document.getElementById('lightbox-image');
   const caption = document.getElementById('lightbox-caption');
@@ -89,7 +53,13 @@
   window.addEventListener('resize', updateActiveNav);
   updateActiveNav();
 
+  const videos = [...document.querySelectorAll('video')];
+  videos.forEach(video => {
+    video.addEventListener('play', () => {
+      videos.forEach(other => { if (other !== video) other.pause(); });
+    });
+  });
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) document.querySelectorAll('video').forEach(video => video.pause());
+    if (document.hidden) videos.forEach(video => video.pause());
   });
 })();

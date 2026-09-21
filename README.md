@@ -8,13 +8,13 @@ Two focused portfolios share the existing `media/` assets:
 
 ## Agent portfolio
 
-The Agent version presents the Ericsson SP Copilot project, power-domain RAG work, deployment and evaluation experience, and supporting robotics work. It uses the original project screenshots and recordings. The synchronization poster is a frame from `media/sync.mp4`.
+The Agent version presents the Ericsson SP Copilot project, power-domain RAG work, deployment and evaluation experience, and three supporting robotics projects. All five Ericsson skill demos are visible on the page, alongside all four RAG images. Robotics evidence includes the Midea setup and annotation tool, garment-manipulation video, and the Lund visual-target demonstration. It uses the original project screenshots and recordings. The synchronization poster is a frame from `media/sync.mp4`.
 
 Files:
 
 - `agent-portfolio.html` — content and accessible page structure
 - `assets/agent-portfolio.css` — responsive styles and print layout
-- `assets/agent-portfolio.js` — keyboard-accessible demo tabs, image viewer, and navigation state
+- `assets/agent-portfolio.js` — image viewer and navigation state
 
 There is no build step or external JavaScript dependency. The existing GitHub Pages deployment serves the HTML, CSS, JavaScript, and media directly.
 
