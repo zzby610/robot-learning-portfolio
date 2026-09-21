@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="Biyu Zou — AI engineering portfolio featuring agent orchestration, MCP integrations, human-in-the-loop workflows and domain-specific RAG.">
+  <title>Biyu Zou | AI Agents & Applied AI</title>
+  <style>
+    :root { --ink:#152033; --muted:#526077; --blue:#1a44d8; --line:#dce2ed; --paper:#fff; --wash:#f3f6fb; --navy:#111e38; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:6rem; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:1rem; line-height:1.65; color:var(--ink); background:var(--paper); }
+    a { color:var(--blue); text-underline-offset:4px; }
+    a:hover { text-decoration-thickness:2px; }
+    a:focus-visible,summary:focus-visible { outline:3px solid var(--blue); outline-offset:5px; }
+    .wrap { width:min(1160px,calc(100% - 64px)); margin-inline:auto; }
+    .skip { position:absolute; left:1rem; top:-6rem; z-index:30; background:white; padding:.7rem 1rem; }
+    .skip:focus { top:.5rem; }
+    .hero { padding:76px 0 62px; display:grid; grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr); gap:4rem; align-items:start; }
+    .eyebrow { margin:0 0 1.3rem; color:var(--blue); font-size:.875rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { font-size:clamp(3.6rem,7.8vw,6rem); font-weight:700; line-height:1.06; letter-spacing:-.045em; margin:0 0 1.5rem; }
+    .lead { margin:0; max-width:700px; color:var(--ink); font-size:clamp(1.4rem,2.3vw,1.8rem); line-height:1.45; letter-spacing:-.025em; }
+    .intro { max-width:650px; margin:1.35rem 0 0; color:var(--muted); }
+    .text-link { font-weight:650; font-size:.9375rem; }
+    .focus-strip { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); margin-bottom:64px; }
+    .focus-strip div { padding:1.25rem 1.5rem; border-right:1px solid var(--line); }
+    .focus-strip div:first-child { padding-left:0; }
+    .focus-strip div:last-child { border:0; }
+    .focus-strip strong { display:block; font-size:.9375rem; }
+    .focus-strip span { color:var(--muted); font-size:.875rem; }
+    .section-heading { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin:0 0 1.8rem; }
+    .section-heading h2 { font-size:2rem; letter-spacing:-.03em; line-height:1.2; margin:0; }
+    .section-heading p { color:var(--muted); font-size:.875rem; margin:0; }
+    .case { border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:36px; }
+    .case-head { padding:38px 40px 32px; }
+    .case-meta { display:flex; flex-wrap:wrap; gap:.55rem 1rem; color:var(--muted); font-size:.875rem; margin-bottom:1rem; }
+    .case-meta .number { color:var(--blue); font-weight:750; }
+    h3 { font-size:clamp(1.75rem,3.4vw,2.55rem); line-height:1.2; letter-spacing:-.035em; margin:0 0 1rem; }
+    .case-summary { font-size:1.125rem; color:var(--muted); max-width:810px; margin:0; }
+    .tags { list-style:none; display:flex; flex-wrap:wrap; gap:.5rem; padding:0; margin:1.4rem 0 0; }
+    .tags li { font-size:.875rem; font-weight:550; background:var(--wash); border:1px solid var(--line); border-radius:4px; padding:.3rem .6rem; }
+    .feature-stage { background:var(--navy); padding:30px 40px; color:white; }
+    figure { margin:0; min-width:0; }
+    .image-link { display:block; line-height:0; border-radius:6px; overflow:hidden; background:white; }
+    .image-link img { display:block; width:100%; height:auto; }
+    figcaption { font-size:.875rem; color:var(--muted); margin-top:.8rem; }
+    .feature-stage figcaption { color:#c0cde4; }
+    .case-body { padding:34px 40px 38px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr); gap:3rem; align-items:start; }
+    h4 { font-size:1.0625rem; margin:0 0 .65rem; }
+    .body-copy p { margin:0 0 1.25rem; color:var(--muted); }
+    .body-copy ul { padding-left:1.2rem; margin:0; color:var(--muted); }
+    .body-copy li+li { margin-top:.8rem; }
+    .body-copy strong { color:var(--ink); font-weight:650; }
+    .workflow-note { border-left:3px solid var(--blue); background:var(--wash); padding:1rem 1.2rem; margin-top:1.6rem; }
+    .workflow-note p { margin:0; font-size:.9375rem; }
+    .ui-figure { width:min(100%,290px); justify-self:end; }
+    .ui-figure .image-link { border:1px solid var(--line); box-shadow:0 10px 30px #1520330b; }
+    .rag-main { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(220px,.6fr); align-items:start; gap:2rem; padding:0 40px 32px; }
+    .rag-main .diagram { padding:1.4rem; background:var(--wash); border:1px solid var(--line); border-radius:6px; }
+    .rag-main .diagram img { max-height:480px; object-fit:contain; }
+    .rag-main .phone { max-width:260px; justify-self:center; }
+    .rag-main .phone .image-link { border:1px solid var(--line); }
+    .rag-copy { padding:0 40px 30px; }
+    .rag-copy .columns { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .rag-copy p { margin:0; color:var(--muted); }
+    details { border-top:1px solid var(--line); padding:1.2rem 40px; background:#fbfcfe; }
+    summary { cursor:pointer; font-size:.9375rem; font-weight:650; }
+    .more-media { display:grid; grid-template-columns:1.3fr .7fr; gap:2rem; align-items:start; padding-top:1.5rem; }
+    .more-media img { max-height:500px; object-fit:contain; }
+    .more-media .image-link { border:1px solid var(--line); }
+    .background { padding-top:32px; padding-bottom:54px; }
+    .experience-list { border-top:1px solid var(--line); }
+    .experience { display:grid; grid-template-columns:190px minmax(0,1fr) 150px; gap:1.8rem; border-bottom:1px solid var(--line); padding:1.6rem 0; }
+    .experience h3 { font-size:1rem; letter-spacing:0; line-height:1.5; margin:0; }
+    .experience p { margin:0; color:var(--muted); font-size:.9375rem; }
+    .experience .dates { font-size:.875rem; color:var(--muted); text-align:right; }
+    footer { padding:24px 0; border-top:1px solid var(--line); color:var(--muted); font-size:.875rem; }
+    footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.75rem; }
+    @media (max-width:800px) {
+      .wrap { width:calc(100% - 40px); }
+      .hero { padding:48px 0 36px; gap:2rem; grid-template-columns:1fr; }
+      .focus-strip { margin-bottom:40px; }
+      .focus-strip div { padding:1rem; }
+      .case-head,.case-body { padding:28px; }
+      .feature-stage { padding:24px; }
+      .case-body { gap:2rem; grid-template-columns:minmax(0,1fr) minmax(190px,.55fr); }
+      .rag-main { padding:0 28px 28px; gap:1.25rem; }
+      .rag-copy { padding:0 28px 28px; }
+      details { padding:1.2rem 28px; }
+      .experience { grid-template-columns:155px 1fr; gap:.8rem 1.4rem; }
+      .experience .dates { grid-column:1/-1; text-align:left; }
+    }
+    @media (max-width:580px) {
+      h1 { font-size:3.6rem; }
+      .hero { padding-top:38px; }
+      .focus-strip { grid-template-columns:1fr; }
+      .focus-strip div,.focus-strip div:first-child { padding:.9rem 0; border-right:0; border-bottom:1px solid var(--line); }
+      .focus-strip div:last-child { border-bottom:0; }
+      .section-heading { display:block; }
+      .section-heading p { margin-top:.6rem; }
+      .case-head,.case-body { padding:24px 20px; }
+      .feature-stage { padding:16px; }
+      .case-body,.rag-main,.rag-copy .columns,.more-media { grid-template-columns:1fr; }
+      .ui-figure { justify-self:center; }
+      .rag-main { padding:0 20px 24px; }
+      .rag-main .diagram { padding:.75rem; }
+      .rag-copy { padding:0 20px 24px; }
+      .rag-main .phone { max-width:245px; }
+      details { padding:1.2rem 20px; }
+      .more-media figure:last-child { max-width:245px; justify-self:center; }
+      .experience { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+    @media print {
+      .skip, footer { display:none; }
+      .wrap { width:100%; }
+      .hero { padding:20px 0; }
+      .case { break-inside:avoid; }
+      .feature-stage { background:white; color:var(--ink); border:1px solid var(--line); }
+      .feature-stage figcaption { color:var(--ink); }
+      a { color:var(--ink); }
+    }
+
+    /* Project evidence: visible galleries and compact robotics case studies. */
+    .rag-evidence { padding:0 40px 38px; }
+    .rag-diagrams,.rag-outputs,.rag-explanation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .rag-diagrams figure,.rag-outputs figure { border:1px solid var(--line); border-radius:8px; padding:18px; background:var(--wash); }
+    .rag-diagrams img { height:390px; object-fit:contain; }
+    .rag-outputs .image-link { width:min(100%,310px); margin-inline:auto; border:1px solid var(--line); }
+    .rag-outputs figcaption { max-width:340px; margin-inline:auto; }
+    .rag-explanation { margin:30px 0; }
+    .rag-explanation p { margin:0; color:var(--muted); }
+    .robot-projects { display:grid; gap:24px; }
+    .robot-project { padding:28px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .robot-intro h3 { font-size:1.5rem; line-height:1.35; letter-spacing:-.02em; }
+    .robot-intro p { color:var(--muted); margin:0 0 12px; }
+    .robot-intro .case-meta { font-size:.875rem; }
+    .robot-media { display:grid; gap:22px; margin-top:22px; }
+    .robot-media.single { max-width:900px; }
+    .robot-media.single img { max-height:420px; object-fit:contain; }
+    .robot-media .image-link { border:1px solid var(--line); }
+    .midea-media { grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr); }
+    .midea-media img { height:310px; object-fit:contain; }
+    .lund-media { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .lund-media .image-link { aspect-ratio:16/9; }
+    .lund-media img { height:100%; object-fit:contain; }
+    .robot-media video { display:block; width:100%; aspect-ratio:16/9; object-fit:contain; background:#111e38; border-radius:6px; }
+    .robot-demo-link { margin:20px 0 0; font-size:.9375rem; }
+    @media (max-width:800px) {
+      .rag-evidence { padding-inline:28px; }
+      .rag-diagrams img { height:290px; }
+      .midea-media img { height:250px; }
+    }
+    @media (max-width:580px) {
+      .rag-evidence { padding-inline:20px; }
+      .rag-diagrams,.rag-outputs,.rag-explanation,.midea-media,.lund-media { grid-template-columns:1fr; }
+      .rag-diagrams figure,.rag-outputs figure { padding:14px; }
+      .rag-diagrams img { height:auto; max-height:440px; }
+      .robot-project { padding:20px; }
+      .midea-media img { height:auto; max-height:350px; }
+      .robot-photo { max-width:280px; margin-inline:auto; }
+    }
+
+    .hero { grid-template-columns:minmax(0,1fr); padding-top:58px; }
+    .intro { max-width:800px; }
+    .contact-inline { display:flex; flex-wrap:wrap; align-items:center; gap:10px 24px; margin-top:24px; color:var(--muted); font-size:.9375rem; }
+    .contact-inline a { font-weight:550; overflow-wrap:anywhere; }
+    .contact-section { padding:28px 0 42px; border-top:1px solid var(--line); }
+    .contact-section h2 { margin:0; font-size:1.5rem; }
+    .ericsson-demos { padding:0 40px 40px; }
+    .demos-heading { font-size:1.4rem; margin-bottom:22px; }
+    .demo-gallery { display:grid; gap:32px; }
+    .demo-figure { padding:22px; border:1px solid var(--line); border-radius:8px; background:var(--wash); }
+    .demo-figure figcaption { margin:0 0 16px; }
+    .demo-figure h5 { margin:0 0 6px; font-size:1.125rem; color:var(--ink); }
+    .demo-figure p { margin:0; font-size:.9375rem; }
+    .demo-figure .image-link { border:1px solid var(--line); }
+    .demo-figure img { width:100%; height:auto; }
+    .lund-media { grid-template-columns:minmax(0,1fr); max-width:820px; }
+    @media (max-width:800px) { .ericsson-demos { padding:0 28px 28px; } }
+    @media (max-width:580px) {
+      .hero { padding-top:36px; }
+      .contact-inline { gap:10px 18px; }
+      .ericsson-demos { padding:0 20px 24px; }
+      .demo-figure { padding:14px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">AI engineering · Selected work</p>
+        <h1 id="page-title">Biyu Zou</h1>
+        <p class="lead">Agent orchestration, grounded retrieval,<br>and human-in-the-loop workflows.</p>
+        <p class="intro">M.Sc. graduate in Machine Learning, Systems and Control from Lund University, with experience in enterprise agent workflows, domain-specific RAG and robot learning.</p>
+        <div class="contact-inline" aria-label="Contact details">
+          <span>Lund, Sweden</span>
+          <a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a>
+          <a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="focus-strip" aria-label="Areas of experience">
+      <div><strong>Agent systems</strong><span>Routing · MCP integrations · Tool orchestration</span></div>
+      <div><strong>Grounded responses</strong><span>RAG · Domain context · Evidence filtering</span></div>
+      <div><strong>Human oversight</strong><span>Review workflows · Approved write actions</span></div>
+    </div>
+
+    <section id="selected-work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <h2 id="work-title">Selected work</h2>
+        <p>Enterprise agents & domain-specific AI</p>
+      </div>
+
+      <article class="case" aria-labelledby="ericsson-title">
+        <div class="case-head">
+          <div class="case-meta"><span class="number">01 / ERICSSON</span><span>Master’s thesis · Jan – Jun 2026</span></div>
+          <h3 id="ericsson-title">SP Copilot: an agent workflow<br>for enterprise information and actions</h3>
+          <p class="case-summary">A router–executor agent combining retrieval grounding, tool orchestration, evidence filtering and human review for summaries, risk analysis and data synchronization.</p>
+          <ul class="tags" aria-label="Ericsson project capabilities">
+            <li>Agent orchestration</li><li>MCP</li><li>Confluence & Jira</li><li>Streamlit</li><li>Human-in-the-loop</li>
+          </ul>
+        </div>
+        <div class="feature-stage">
+          <figure>
+            <a class="image-link" href="media/sparchi.png" target="_blank" rel="noopener" aria-label="Open the SP Copilot architecture diagram at full size">
+              <img src="media/sparchi.png" width="1400" height="788" alt="SP Copilot architecture: Streamlit UI, router, skill executors, conversation state, data pipeline, MCP integrations and human review before approved writes.">
+            </a>
+            <figcaption>System architecture — from connected sources to context preparation, skill execution and human approval. Select the image to inspect it at full size.</figcaption>
+          </figure>
+        </div>
+        <div class="case-body">
+          <div class="body-copy">
+            <h4>The workflow</h4>
+            <p>Users work through a Streamlit interface to request summaries, review risks, prioritize Jira items and prepare updates. The architecture separates the routing decision from the skills that carry out each task.</p>
+            <h4>Engineering focus</h4>
+            <ul>
+              <li><strong>Tool integration.</strong> An integration facade connects MCP servers for Confluence, Jira and FPT, with a native API fallback.</li>
+              <li><strong>Context preparation.</strong> Tiered fetching and cleaning, explicit overrides and XML context fusion produce a context snapshot for the executors.</li>
+              <li><strong>State across interactions.</strong> Conversation state and an asynchronous summary job support context reuse by the router and skills.</li>
+              <li><strong>Review before action.</strong> Read-only skills handle wiki queries, summaries, risk and priority analysis; synchronization follows an explicit human approval step.</li>
+            </ul>
+            <div class="workflow-note">
+              <h4>Designed for a user-facing workflow</h4>
+              <p>The interface exposes connected sources, optional FPT context and context inspection tools, alongside the assistant’s task controls.</p>
+            </div>
+          </div>
+          <figure class="ui-figure">
+            <a class="image-link" href="media/User_Interface.png" target="_blank" rel="noopener" aria-label="Open the SP Copilot interface screenshot at full size">
+              <img src="media/User_Interface.png" width="633" height="1000" loading="lazy" alt="SP Copilot interface showing connection status, context tools and actions for summaries, risk review and Jira updates.">
+            </a>
+            <figcaption>SP Copilot interface and task controls.</figcaption>
+          </figure>
+        </div>
+
+        <div class="ericsson-demos">
+          <h4 class="demos-heading">Project demos</h4>
+          <div class="demo-gallery">
+            <figure class="demo-figure">
+              <figcaption><h5>Wiki demo</h5><p>Terminology questions answered using system glossary definitions and local wiki references.</p></figcaption>
+              <a class="image-link" href="media/wiki_demo1.png" target="_blank" rel="noopener" aria-label="Open Wiki demo screenshot at full size">
+                <img src="media/wiki_demo1.png" width="1105" height="935" loading="lazy" alt="SP Copilot answering terminology questions and identifying glossary and local wiki sources.">
+              </a>
+            </figure>
+            <figure class="demo-figure">
+              <figcaption><h5>Risk demo</h5><p>Milestone status and risk themes, with supporting evidence and recommended actions.</p></figcaption>
+              <a class="image-link" href="media/risk_demo1.png" target="_blank" rel="noopener" aria-label="Open Risk demo screenshot at full size">
+                <img src="media/risk_demo1.png" width="1608" height="1013" loading="lazy" alt="SP Copilot risk review showing milestone health, risk levels, supporting evidence and recommended actions.">
+              </a>
+            </figure>
+            <figure class="demo-figure">
+              <figcaption><h5>Priority demo</h5><p>Current and recommended Jira priorities, accompanied by confidence levels and a short justification.</p></figcaption>
+              <a class="image-link" href="media/priority2.png" target="_blank" rel="noopener" aria-label="Open Priority demo screenshot at full size">
+                <img src="media/priority2.png" width="1367" height="1072" loading="lazy" alt="SP Copilot showing current and recommended Jira priorities, confidence levels and task-status evidence.">
+              </a>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" aria-labelledby="rag-title">
+        <div class="case-head">
+          <div class="case-meta"><span class="number">02 / XINGTONG</span><span>Domain-specific RAG</span></div>
+          <h3 id="rag-title">An assistant for power-domain questions</h3>
+          <p class="case-summary">A domain-specific RAG workflow focused on chunking, dynamic context windows, terminology filtering and retrieval quality, with an interface for knowledge and operational indicator queries.</p>
+          <ul class="tags" aria-label="RAG project capabilities">
+            <li>Retrieval-augmented generation</li><li>Domain terminology</li><li>Context selection</li><li>Conversational interface</li>
+          </ul>
+        </div>
+        <div class="rag-evidence">
+          <h4>How it works</h4>
+          <div class="rag-diagrams">
+<figure class="">
+      <a class="image-link" href="media/rag1.png" target="_blank" rel="noopener" aria-label="Open image at full size: Word-segmentation learning through QLoRA fine-tuning">
+        <img src="media/rag1.png" width="1143" height="1000" loading="lazy" alt="Word-segmentation learning through QLoRA fine-tuning">
+      </a>
+      <figcaption>01 / Domain terminology — word-segmentation capability learning.</figcaption>
+    </figure>
+<figure class="">
+      <a class="image-link" href="media/rag2.png" target="_blank" rel="noopener" aria-label="Open image at full size: Power-domain query-processing and routing workflow">
+        <img src="media/rag2.png" width="1067" height="1000" loading="lazy" alt="Power-domain query-processing and routing workflow">
+      </a>
+      <figcaption>02 / Query workflow — knowledge answers and indicator-data queries.</figcaption>
+    </figure>
+          </div>
+          <div class="rag-explanation">
+            <div><h4>Retrieval and domain context</h4><p>Worked on how domain information is chunked, filtered and selected as context, with attention to specialist terminology and retrieval quality.</p></div>
+            <div><h4>From a question to a useful response</h4><p>The project materials show distinct paths for knowledge-base questions and indicator queries. The interface presents both textual answers and data visualizations.</p></div>
+          </div>
+          <h4>Example outputs</h4>
+          <div class="rag-outputs">
+<figure class="">
+      <a class="image-link" href="media/rag3.png" target="_blank" rel="noopener" aria-label="Open image at full size: Xiangdian Genie answering a load-status question with a chart">
+        <img src="media/rag3.png" width="563" height="1000" loading="lazy" alt="Xiangdian Genie answering a load-status question with a chart">
+      </a>
+      <figcaption>03 / Visual answer — a load-status query returns a chart.</figcaption>
+    </figure>
+<figure class="">
+      <a class="image-link" href="media/rag4.png" target="_blank" rel="noopener" aria-label="Open image at full size: Mobile assistant answering operating-cost, supply-area and line-loss questions">
+        <img src="media/rag4.png" width="563" height="1000" loading="lazy" alt="Mobile assistant answering operating-cost, supply-area and line-loss questions">
+      </a>
+      <figcaption>04 / Indicator answers — domain-specific questions in a conversational interface.</figcaption>
+    </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="background" class="background" aria-labelledby="background-title">
+      <div class="section-heading">
+        <h2 id="background-title">A foundation in applied machine learning</h2>
+        <p>Additional research & engineering experience</p>
+      </div>
+      <div class="robot-projects">
+        <article class="robot-project">
+          <div class="robot-intro"><div><p class="case-meta">HKU Agentic Intelligence Lab · Research Assistant · Oct 2025 – Jan 2026</p><h3>Learning from successful and failed robot rollouts</h3><p>Explored negative-aware RL alignment for diffusion and flow-based VLA policies, using rollout feedback to study action consistency and policy behavior.</p></div></div>
+        </article>
+        <article class="robot-project">
+          <div class="robot-intro"><div><p class="case-meta">Midea AI Research Institute · Embodied Intelligence Intern · Jun – Sep 2025</p><h3>Real-robot data collection and human intervention</h3><p>Built a multi-view HDF5 data pipeline and worked on VLA policy adaptation and DAgger-style human intervention for household manipulation.</p></div></div>
+          <div class="robot-media midea-media">
+<figure class="robot-photo">
+      <a class="image-link" href="media/robot.png" target="_blank" rel="noopener" aria-label="Open image at full size: Mobile robot and arm setup for data collection and household manipulation">
+        <img src="media/robot.png" width="778" height="1000" loading="lazy" alt="Mobile robot and arm setup for data collection and household manipulation">
+      </a>
+      <figcaption>Physical robot setup for data collection and policy rollouts.</figcaption>
+    </figure>
+<figure class="">
+      <a class="image-link" href="media/annotation.png" target="_blank" rel="noopener" aria-label="Open image at full size: HDF5 visualization and annotation tool with three camera views">
+        <img src="media/annotation.png" width="1400" height="975" loading="lazy" alt="HDF5 visualization and annotation tool with three camera views">
+      </a>
+      <figcaption>Trajectory inspection and annotation across synchronized camera views.</figcaption>
+    </figure>
+          </div>
+          <p class="robot-demo-link"><a href="media/robotdemo.mp4" target="_blank" rel="noopener">Garment manipulation demo (video)</a></p>
+        </article>
+        <article class="robot-project">
+          <div class="robot-intro"><div><p class="case-meta">Lund Robotics Lab · Project Lead · Feb – May 2025</p><h3>OpenVLA-style adaptation and rollout diagnostics</h3><p>Adapted OpenVLA-style policies for a UR5e setup, including action tokenization, LoRA fine-tuning, ROS 2 deployment and rollout failure analysis.</p></div></div>
+          <div class="robot-media lund-media">
+
+            <figure><video controls playsinline preload="metadata" aria-label="Set-of-Mark visual target and motion annotation demonstration" src="media/Som.mp4">Your browser does not support embedded video. <a href="media/Som.mp4">Open the demonstration video</a>.</video><figcaption>Set-of-Mark-style visual targets and motion traces used as action-grounded supervision.</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="contact-inline">
+        <span>Lund, Sweden</span>
+        <a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a>
+        <a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>Biyu Zou · AI Agents & Applied AI</span><span>September 2026</span></div></footer>
+</body>
+</html>
+
