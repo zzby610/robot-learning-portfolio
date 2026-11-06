@@ -309,6 +309,13 @@
       font-size: 13px;
     }
 
+    #robbyant .project { align-items: start; }
+    #robbyant .project p { color: var(--muted); margin: 10px 0 0; }
+    #robbyant .robbyant-result { align-self: center; padding: 18px 22px; border-left: 4px solid var(--green); background: #f1fbf9; }
+    .robbyant-result strong { display: block; color: #155b52; font-size: clamp(32px, 5vw, 46px); line-height: 1.2; margin: 6px 0; }
+    #robbyant .robbyant-rtc { grid-template-columns: minmax(0, 1fr); }
+    #robbyant video { aspect-ratio: 16 / 9; }
+
     @media (max-width: 900px) {
       header { padding-top: 44px; }
       .profile,
@@ -353,6 +360,7 @@
   <nav aria-label="Portfolio navigation">
     <div class="wrap">
       <a href="#background">Background</a>
+      <a href="#robbyant">Robbyant</a>
       <a href="#midea">Midea</a>
       <a href="#hku">HKU</a>
       <a href="#lund">Lund</a>
@@ -377,6 +385,65 @@
           <p>Real-robot demo, HDF5 annotation tooling, LIBERO evaluation, UR5e deployment, and qualitative failure analysis.</p>
         </div>
       </div>
+    </section>
+
+    <section id="robbyant" aria-labelledby="robbyant-title">
+      <h2 id="robbyant-title">Robbyant (Ant Group) — Robot Learning on Hardware</h2>
+      <p class="role">Embodied Intelligence Algorithm Intern · Shanghai, China / Remote · July 2026 – Present</p>
+
+      <article class="project">
+        <div>
+          <h3>Adapting LingBot-VLA to a target robot</h3>
+          <p>Can a policy pretrained on different robots learn the controls of one particular robot? I contributed to multi-task mid-training: converting demonstrations to LeRobot, aligning camera observations with recorded actions, checking trajectories, and adapting the training pipeline.</p>
+          <p>We first compared predicted actions with recorded actions offline. We then ran the policy on hardware, where each action changes what the robot sees next.</p>
+        </div>
+        <div class="robbyant-result">
+          <span class="eyebrow">Mean task success · 10 tasks</span>
+          <strong>17% → 34%</strong>
+          <p>Before and after mid-training on the target robot. Six tasks improved and four were unchanged.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Predicting video and actions for dual-arm bowl stacking</h3>
+          <p>LingBot-VA predicts how the scene will change alongside the actions the robot should take. I adapted its post-training and action interface for the AcOne dual-arm robot, from preprocessing demonstrations to running the trained policy in a closed loop.</p>
+          <p>The project also explored learning from rollout feedback through RLT, RECAP, and Kai0. The demonstration shows LingBot-VA executing the stacking task.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <video controls playsinline preload="none" poster="media/robbyant/lingbotva_acone_bowl_stacking.jpg" aria-label="AcOne dual-arm bowl stacking with LingBot-VA">
+              <source src="media/robbyant/lingbotva_acone_bowl_stacking.mp4" type="video/mp4">
+              <a href="media/robbyant/lingbotva_acone_bowl_stacking.mp4">Watch the bowl-stacking video</a>
+            </video>
+            <figcaption>LingBot-VA on AcOne. The two arms manipulate and stack bowls on a tabletop.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="project robbyant-rtc">
+        <div>
+          <h3>Real-time chunking: keeping the robot moving between predictions</h3>
+          <p>LingBot-VLA generates a short sequence of actions at a time. In synchronous control, the robot finishes one sequence and waits for the next. I adapted training and inference for real-time chunking (RTC), so the controller can prepare the next sequence while the current one is executing.</p>
+          <p class="evaluation"><strong>Measured on hardware:</strong> the wait between action chunks fell from about <strong>137 ms to 0 ms</strong>, with task success unchanged. This measures the pause at handoff; the model still takes time to compute the next chunk.</p>
+        </div>
+        <div class="media two">
+          <figure>
+            <video controls playsinline preload="none" poster="media/robbyant/rtc_sync_vs_original.jpg" aria-label="Real-time chunking and synchronous control compared on the same task">
+              <source src="media/robbyant/rtc_sync_vs_original.mp4" type="video/mp4">
+              <a href="media/robbyant/rtc_sync_vs_original.mp4">Watch the control comparison</a>
+            </video>
+            <figcaption>Same-task comparison at original speed: RTC in the main view, synchronous control in the inset.</figcaption>
+          </figure>
+          <figure>
+            <video controls playsinline preload="none" poster="media/robbyant/rtc_training_demo.jpg" aria-label="Robot executing a policy trained with real-time chunking">
+              <source src="media/robbyant/rtc_training_demo.mp4" type="video/mp4">
+              <a href="media/robbyant/rtc_training_demo.mp4">Watch the RTC rollout</a>
+            </video>
+            <figcaption>A separate real-robot rollout with training-time RTC and asynchronous action execution.</figcaption>
+          </figure>
+        </div>
+      </article>
     </section>
 
     <section id="midea">
@@ -530,7 +597,7 @@
 
   <footer>
     <div class="wrap">
-      Biyu Zou – Robot Learning Portfolio – Last updated August 2026
+      Biyu Zou – Robot Learning Portfolio – Last updated November 2026
     </div>
   </footer>
 </body>
