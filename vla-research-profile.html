@@ -73,35 +73,6 @@
       font-size: 14px;
     }
 
-    .header-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-      align-items: center;
-    }
-
-    .cv-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 38px;
-      padding: 8px 14px;
-      border: 1px solid var(--blue);
-      border-radius: 6px;
-      color: #fff;
-      background: var(--blue);
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .cv-button:hover { text-decoration: none; }
-    .cv-button.is-disabled {
-      color: var(--blue);
-      background: #fff;
-      cursor: not-allowed;
-    }
-
     .seeking {
       max-width: 850px;
       margin: 16px 0 0;
@@ -142,13 +113,6 @@
     h2 { margin: 0 0 14px; font-size: 28px; line-height: 1.2; }
     h3 { margin: 0 0 8px; font-size: 24px; line-height: 1.2; }
 
-    .profile {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card,
     .project,
     .support-card {
       border: 1px solid var(--line);
@@ -156,10 +120,6 @@
       background: var(--paper);
       box-shadow: var(--shadow);
     }
-
-    .card { padding: 18px; }
-    .card strong { display: block; margin-bottom: 8px; font-size: 16px; }
-    .card p { margin: 0; color: var(--muted); font-size: 15px; }
 
     .project {
       display: grid;
@@ -240,15 +200,6 @@
       background: #fbfcff;
     }
 
-    .note {
-      margin-top: 14px;
-      padding: 13px 15px;
-      border-left: 4px solid var(--green);
-      background: #f1fbf9;
-      color: #244440;
-      font-size: 14px;
-    }
-
     .evaluation {
       margin-top: 12px;
       padding: 11px 13px;
@@ -318,7 +269,6 @@
 
     @media (max-width: 900px) {
       header { padding-top: 44px; }
-      .profile,
       .project,
       .support,
       .support-card,
@@ -345,21 +295,17 @@
         vision-language-action policies, robot learning data, diffusion and flow-based action generation,
         and sim-to-real evaluation for real-world manipulation.
       </p>
-      <p class="seeking">Seeking PhD and research opportunities in robot learning, vision-language-action policies, world models, and long-horizon robotic manipulation.</p>
+      <p class="seeking">Seeking PhD and research opportunities in robot learning.</p>
       <div class="contact">
         <span>Lund, Sweden</span>
         <span><a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a></span>
         <span><a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a></span>
-      </div>
-      <div class="header-actions">
-        <a class="cv-button is-disabled" href="#" aria-disabled="true" title="TODO: add latest CV PDF">Download CV (TODO)</a>
       </div>
     </div>
   </header>
 
   <nav aria-label="Portfolio navigation">
     <div class="wrap">
-      <a href="#background">Background</a>
       <a href="#robbyant">Robbyant</a>
       <a href="#midea">Midea</a>
       <a href="#hku">HKU</a>
@@ -369,24 +315,6 @@
   </nav>
 
   <main class="wrap">
-    <section id="background">
-      <h2>Background</h2>
-      <div class="profile">
-        <div class="card">
-          <strong>Research Direction</strong>
-          <p>Adapting VLA policies from benchmark data and teleoperation trajectories to robust real-world manipulation.</p>
-        </div>
-        <div class="card">
-          <strong>Technical Focus</strong>
-          <p>Multi-view robot data, action-token supervision, Flow Matching action heads, RL alignment, and rollout diagnostics.</p>
-        </div>
-        <div class="card">
-          <strong>Evidence</strong>
-          <p>Real-robot demo, HDF5 annotation tooling, LIBERO evaluation, UR5e deployment, and qualitative failure analysis.</p>
-        </div>
-      </div>
-    </section>
-
     <section id="robbyant" aria-labelledby="robbyant-title">
       <h2 id="robbyant-title">Robbyant (Ant Group) — Robot Learning on Hardware</h2>
       <p class="role">Embodied Intelligence Algorithm Intern · Shanghai, China / Remote · July 2026 – Present</p>
@@ -408,7 +336,6 @@
         <div>
           <h3>Predicting video and actions for dual-arm bowl stacking</h3>
           <p>LingBot-VA predicts how the scene will change alongside the actions the robot should take. I adapted its post-training and action interface for the AcOne dual-arm robot, from preprocessing demonstrations to running the trained policy in a closed loop.</p>
-          <p>The project also explored learning from rollout feedback through RLT, RECAP, and Kai0. The demonstration shows LingBot-VA executing the stacking task.</p>
         </div>
         <div class="media">
           <figure>
@@ -465,12 +392,6 @@
             <li>Fine-tuned PaliGemma-based and pi0-style VLA policies with reasoning-style supervision and stop-gradient training for long-horizon tasks.</li>
             <li>Implemented DAgger-style online intervention, collecting correction trajectories and improving the real-world task success rate from 65% to 73%.</li>
           </ul>
-          <div class="evaluation">
-            <strong>Evaluation details:</strong> real-world manipulation rollout setting; no separate trial-count metadata was found in the available project files.
-          </div>
-          <div class="note">
-            Research value: experience with the full robot-learning loop from data collection and policy adaptation to real-robot rollout analysis.
-          </div>
         </div>
         <div class="media">
           <figure>
@@ -509,12 +430,6 @@
             <li>Integrated a Flow Matching action head into a Diffusion VLM backbone to build a unified diffusion-style VLA policy for continuous robot action prediction.</li>
             <li>Implemented a dual-velocity positive/negative alignment objective using successful and failed rollout signals, improving the task success rate from 71% to 84% on a LIBERO manipulation setting.</li>
           </ul>
-          <div class="evaluation">
-            <strong>Evaluation details:</strong> LIBERO manipulation setting; no separate trial-count metadata was found in the available project files.
-          </div>
-          <div class="note">
-            Research value: formulation of an alignment hypothesis, implementation of a training objective, benchmark evaluation, and analysis of action consistency and rollout stability.
-          </div>
         </div>
         <div class="media">
           <figure>
@@ -543,14 +458,8 @@
             <li>Conducted a sim-to-real study adapting OpenVLA-style action-token policies from LIBERO simulation data to a UR5e real-robot manipulation setup.</li>
             <li>Implemented a 256-bin action-tokenization pipeline mapping continuous 7D end-effector commands into discrete tokens, followed by LoRA fine-tuning with LIBERO data and 183 real-robot trajectories.</li>
             <li>Used Set-of-Mark-style visual target annotations and trajectory-based motion cues to organize action-grounded supervision for downstream adaptation.</li>
-            <li>Deployed the policy through ROS 2 with asynchronous inference, achieving 61% task success and analyzing discretization errors, inference latency, visual shift, and rollout instability.</li>
+            <li>Deployed the policy through ROS 2 with asynchronous inference, achieving 61% success on real-world pick-and-place trials and analyzing discretization errors, inference latency, visual shift, and rollout instability.</li>
           </ul>
-          <div class="evaluation">
-            <strong>Evaluation details:</strong> UR5e real-robot pick-and-place deployment with 183 real-robot fine-tuning trajectories; no separate rollout-count metadata was found in the available project files.
-          </div>
-          <div class="note">
-            Research value: a compact sim-to-real study covering action representation, limited real-robot fine-tuning, deployment constraints, and failure analysis.
-          </div>
         </div>
         <div class="media">
           <figure>
