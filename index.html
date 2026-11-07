@@ -1,513 +1,192 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
-  <title>Biyu Zou | Robot Learning Portfolio</title>
-  <style>
-    :root {
-      --bg: #f7f8fb;
-      --paper: #fff;
-      --ink: #172033;
-      --muted: #5d687a;
-      --line: #d9dfeb;
-      --blue: #2458d4;
-      --green: #0f766e;
-      --shadow: 0 12px 34px rgba(18, 32, 59, .08);
-    }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex, nofollow, noarchive, nosnippet" name="robots"/>
+<meta content="noindex, nofollow, noarchive, nosnippet" name="googlebot"/>
+<title>Biyu Zou | Robot Learning Portfolio</title>
+<link href="assets/research-portfolio.css" rel="stylesheet"/>
+<meta content="Biyu Zou: research and engineering in vision-language-action policies, robot learning, and real-robot evaluation." name="description"/></head>
+<body><a class="skip-link" href="#work">Skip to projects</a>
+<header class="masthead" id="top">
+<div class="wrap">
+<div class="masthead-top"><p class="eyebrow">Robot Learning · Research Portfolio</p><span class="location">Lund, Sweden</span></div>
+<div class="intro">
+<div>
+<h1>Biyu Zou</h1>
+<p class="lead">Research and engineering in vision-language-action policies, model adaptation, and real-robot evaluation.</p>
+<div class="contact"><a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a><a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn ↗</a><a href="https://github.com/zzby610">GitHub ↗</a></div>
+</div>
+<aside aria-label="Education and research interests" class="profile-note"><strong>M.Sc. · Lund University</strong><p>Machine Learning, Systems and Control</p><p class="availability">Open to PhD &amp; research opportunities.</p></aside>
+</div>
+</div>
+</header>
+<nav aria-label="Portfolio navigation" class="site-nav">
+<div class="wrap nav-inner"><span class="nav-label">Selected work</span>
+<a href="#robbyant">Robbyant</a>
+<a href="#midea">Midea</a>
+<a href="#hku">HKU</a>
+<a href="#lund">Lund</a>
+<a href="#supporting">Related work</a>
+</div>
+</nav>
+<main class="wrap" id="work">
+<section aria-labelledby="robbyant-title" class="research-section" id="robbyant">
+<div class="section-heading"><span class="section-index">01</span><div><h2 id="robbyant-title">Robbyant (Ant Group)</h2><p class="section-role">Embodied Intelligence Algorithm Intern · Shanghai / Remote</p></div><p class="section-date">Jul 2026 – Present</p></div>
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
+<article class="project">
+<div>
+<span class="project-kicker">01 / Foundation model adaptation</span><h3>Adapting a VLA policy to a new robot</h3>
+<p>I contributed to multi-task mid-training of LingBot-VLA for a target robot: converting demonstrations to LeRobot, aligning observations and actions, checking trajectories, and adapting the training pipeline.</p>
+<p>We combined offline action-prediction evaluation with closed-loop robot trials to examine the gap between predicted actions and physical execution.</p>
+</div>
+<div class="result"><span class="result-label">Mean success across 10 tasks</span><strong class="result-value">17% <span class="arrow">→</span> 34%</strong><p>Before and after multi-task mid-training on the target robot.</p><p class="task-split">6 tasks improved · 4 unchanged</p></div>
+</article>
+<article class="project">
+<div>
+<span class="project-kicker">02 / World action models</span><h3>Video and action prediction for dual-arm manipulation</h3>
+<p>LingBot-VA predicts how the scene will change alongside the actions the robot should take. I adapted its post-training and action interface for the AcOne dual-arm robot, from preprocessing demonstrations to running the trained policy in a closed loop.</p>
+</div>
+<div class="media">
+<figure>
+<video aria-label="AcOne dual-arm bowl stacking with LingBot-VA" controls="" playsinline="" poster="media/robbyant/lingbotva_acone_bowl_stacking.jpg" preload="none">
+<source src="media/robbyant/lingbotva_acone_bowl_stacking.mp4" type="video/mp4"/>
+<a href="media/robbyant/lingbotva_acone_bowl_stacking.mp4">Watch the bowl-stacking video</a>
+</video>
+<figcaption>LingBot-VA on AcOne. The two arms manipulate and stack bowls on a tabletop.</figcaption>
+</figure>
+</div>
+</article>
+<article class="project rtc">
+<div class="rtc-intro"><div><span class="project-kicker">03 / Real-time control</span><h3>Continuous execution with real-time chunking</h3></div><div><p>I adapted LingBot-VLA training and inference for real-time chunking (RTC). The controller prepares the next action sequence while the robot executes the current one, reducing the pause between chunks.</p><p class="evaluation"><strong>Measured on hardware:</strong> the wait between action chunks fell from about <strong>137 ms to 0 ms</strong>, with task success unchanged. This measures the pause at handoff; the model still takes time to compute the next chunk.</p></div></div>
+<div class="media two">
+<figure>
+<video aria-label="Real-time chunking and synchronous control compared on the same task" controls="" playsinline="" poster="media/robbyant/rtc_sync_vs_original.jpg" preload="none">
+<source src="media/robbyant/rtc_sync_vs_original.mp4" type="video/mp4"/>
+<a href="media/robbyant/rtc_sync_vs_original.mp4">Watch the control comparison</a>
+</video>
+<figcaption>Same-task comparison at original speed: RTC in the main view, synchronous control in the inset.</figcaption>
+</figure>
+<figure>
+<video aria-label="Robot executing a policy trained with real-time chunking" controls="" playsinline="" poster="media/robbyant/rtc_training_demo.jpg" preload="none">
+<source src="media/robbyant/rtc_training_demo.mp4" type="video/mp4"/>
+<a href="media/robbyant/rtc_training_demo.mp4">Watch the RTC rollout</a>
+</video>
+<figcaption>A separate real-robot rollout with training-time RTC and asynchronous action execution.</figcaption>
+</figure>
+</div>
+</article>
+</section>
+<section aria-labelledby="midea-title" class="research-section" id="midea">
+<div class="section-heading"><span class="section-index">02</span><div><h2 id="midea-title">Midea AI Research</h2><p class="section-role">Embodied Intelligence Intern</p></div><p class="section-date">Jun – Sep 2025</p></div>
+<article class="project">
+<div>
+<h3>VLA learning for household manipulation</h3>
 
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
 
-    .wrap {
-      width: min(1080px, calc(100% - 36px));
-      margin: 0 auto;
-    }
+<ul>
+<li>Co-developed an embodied VLA framework integrating mobile platforms, ARX robotic arms, multi-view cameras, and VR teleoperation for household manipulation.</li>
+<li>Built a multi-view HDF5 data pipeline aligning RGB observations, language instructions, robot states, and teleoperation trajectories.</li>
+<li>Fine-tuned PaliGemma-based and pi0-style VLA policies with reasoning-style supervision and stop-gradient training for long-horizon tasks.</li>
+<li>Implemented DAgger-style online intervention, collecting correction trajectories and improving the real-world task success rate from 65% to 73%.</li>
+</ul>
+</div>
+<div class="media">
+<figure>
+<video aria-label="Real-robot garment manipulation" controls="" playsinline="" poster="media/midea-garment-poster.jpg" preload="none" src="media/robotdemo.mp4"><a href="media/robotdemo.mp4">Open the video</a></video>
+<figcaption>Real-robot garment manipulation demo from the household-task rollout setup.</figcaption>
+</figure>
+<div class="media two">
+<figure>
+<a aria-label="View full-size image: HDF5 annotation tool" class="figure-link" href="media/annotation.png" rel="noopener" target="_blank"><img alt="HDF5 annotation tool" decoding="async" loading="lazy" src="media/annotation.png"/></a>
+<figcaption>HDF5 trajectory inspection and annotation.</figcaption>
+</figure>
+<figure>
+<a aria-label="View full-size image: Robot learning setup" class="figure-link" href="media/robot.png" rel="noopener" target="_blank"><img alt="Robot learning setup" decoding="async" loading="lazy" src="media/robot.png"/></a>
+<figcaption>Physical robot setup for data collection and rollout.</figcaption>
+</figure>
+</div>
+</div>
+</article>
+</section>
+<section aria-labelledby="hku-title" class="research-section" id="hku">
+<div class="section-heading"><span class="section-index">03</span><div><h2 id="hku-title">The University of Hong Kong</h2><p class="section-role">Research Assistant · Agentic Intelligence Lab</p></div><p class="section-date">Oct 2025 – Jan 2026</p></div>
+<article class="project">
+<div>
+<h3>Aligning diffusion and flow-based policies</h3>
 
-    header {
-      padding: 58px 0 30px;
-      background: linear-gradient(180deg, #eef4ff 0%, #f7f8fb 100%);
-      border-bottom: 1px solid var(--line);
-    }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
+<ul>
+<li>Independently explored negative-aware RL alignment for diffusion/flow-based VLA policies, motivated by long-horizon continuous-action instability.</li>
+<li>Integrated a Flow Matching action head into a Diffusion VLM backbone to build a unified diffusion-style VLA policy for continuous robot action prediction.</li>
+<li>Implemented a dual-velocity positive/negative alignment objective using successful and failed rollout signals, improving the task success rate from 71% to 84% on a LIBERO manipulation setting.</li>
+</ul>
+</div>
+<div class="media">
+<figure>
+<a aria-label="View full-size image: Unified Diffusion VLA via Negative-Aware RL" class="figure-link" href="media/discrete-diffusion-naft-workflow.svg" rel="noopener" target="_blank"><img alt="Unified Diffusion VLA via Negative-Aware RL" decoding="async" loading="lazy" src="media/discrete-diffusion-naft-workflow.svg"/></a>
+<figcaption>Method summary for diffusion/flow VLA alignment using positive and negative rollout feedback.</figcaption>
+</figure>
+</div>
+</article>
+</section>
+<section aria-labelledby="lund-title" class="research-section" id="lund">
+<div class="section-heading"><span class="section-index">04</span><div><h2 id="lund-title">Lund University</h2><p class="section-role">Robotics Lab · Student Research Project</p></div><p class="section-date">Feb – May 2025</p></div>
+<article class="project">
+<div>
+<h3>From action tokens to UR5e deployment</h3>
 
-    h1 {
-      margin: 0;
-      font-size: clamp(40px, 6vw, 68px);
-      line-height: 1.02;
-      letter-spacing: 0;
-    }
 
-    .lead {
-      max-width: 850px;
-      margin: 20px 0 0;
-      color: var(--muted);
-      font-size: 20px;
-    }
+<ul>
+<li>Conducted a sim-to-real study adapting OpenVLA-style action-token policies from LIBERO simulation data to a UR5e real-robot manipulation setup.</li>
+<li>Implemented a 256-bin action-tokenization pipeline mapping continuous 7D end-effector commands into discrete tokens, followed by LoRA fine-tuning with LIBERO data and 183 real-robot trajectories.</li>
+<li>Used Set-of-Mark-style visual target annotations and trajectory-based motion cues to organize action-grounded supervision for downstream adaptation.</li>
+<li>Deployed the policy through ROS 2 with asynchronous inference, achieving 61% success on real-world pick-and-place trials and analyzing discretization errors, inference latency, visual shift, and rollout instability.</li>
+</ul>
+</div>
+<div class="media">
+<figure>
+<video aria-label="Visual targets and motion annotations" controls="" playsinline="" poster="media/ur5e-annotations-poster.jpg" preload="none" src="media/Som.mp4"><a href="media/Som.mp4">Open the video</a></video>
+<figcaption>Set-of-Mark-style marking video: visual targets and motion traces used as action-grounded supervision before downstream fine-tuning.</figcaption>
+</figure>
+<figure>
+<a aria-label="View full-size image: OpenVLA failure analysis" class="figure-link" href="media/openvla-failure-analysis.svg" rel="noopener" target="_blank"><img alt="OpenVLA failure analysis" decoding="async" loading="lazy" src="media/openvla-failure-analysis.svg"/></a>
+<figcaption>Qualitative diagnostics from UR5e rollouts.</figcaption>
+</figure>
+</div>
+</article>
+</section>
+<section aria-labelledby="supporting-title" class="research-section" id="supporting">
+<div class="section-heading"><span class="section-index">05</span><div><h2 id="supporting-title">Related work</h2><p class="section-role">Applied AI and software engineering</p></div><p class="section-date"></p></div>
+<div class="support">
+<details class="secondary-project"><summary>Ericsson · Reliable AI Agent Workflow</summary><div class="secondary-body">
+<div>
 
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
 
-    .seeking {
-      max-width: 850px;
-      margin: 16px 0 0;
-      color: var(--ink);
-      font-size: 15px;
-      font-weight: 700;
-    }
+<p>Router-executor agent with retrieval grounding, tool orchestration, evidence filtering, and human-in-the-loop review.</p>
+</div>
+<div class="support-gallery">
+<a aria-label="View full-size image: Ericsson agent architecture" class="figure-link" href="media/sparchi.png" rel="noopener" target="_blank"><img alt="Ericsson agent architecture" decoding="async" loading="lazy" src="media/sparchi.png"/></a>
+<a aria-label="View full-size image: Ericsson agent user interface" class="figure-link" href="media/User_Interface.png" rel="noopener" target="_blank"><img alt="Ericsson agent user interface" decoding="async" loading="lazy" src="media/User_Interface.png"/></a>
+</div>
+</div></details>
+<details class="secondary-project"><summary>XINGTONG · Domain-Specific RAG</summary><div class="secondary-body">
+<div>
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247, 248, 251, .94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav .wrap {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 10px 0;
-    }
-
-    nav a {
-      flex: 0 0 auto;
-      padding: 8px 11px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #fff;
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    main { padding: 32px 0 70px; }
-    section { scroll-margin-top: 70px; margin-top: 22px; }
-    h2 { margin: 0 0 14px; font-size: 28px; line-height: 1.2; }
-    h3 { margin: 0 0 8px; font-size: 24px; line-height: 1.2; }
-
-    .project,
-    .support-card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper);
-      box-shadow: var(--shadow);
-    }
-
-    .project {
-      display: grid;
-      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
-      gap: 24px;
-      padding: 24px;
-    }
-
-    .project + .project { margin-top: 18px; }
-
-    .role {
-      margin: 0 0 13px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin: 12px 0 18px;
-    }
-
-    .chip {
-      padding: 5px 9px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: #34415a;
-      background: #f9fbff;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    li + li { margin-top: 8px; }
-
-    .media {
-      display: grid;
-      gap: 10px;
-      align-content: start;
-    }
-
-    .media.two {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    figure {
-      margin: 0;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    img,
-    video {
-      display: block;
-      width: 100%;
-      max-height: 380px;
-      object-fit: contain;
-      background: #fff;
-    }
-
-    video { background: #101827; }
-
-    figcaption {
-      padding: 8px 10px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-      background: #fbfcff;
-    }
-
-    .evaluation {
-      margin-top: 12px;
-      padding: 11px 13px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #fbfcff;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .evaluation strong { color: var(--ink); }
-
-    .support {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .support-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      padding: 20px;
-      align-items: start;
-    }
-
-    .support-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 760px;
-    }
-
-    .support-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .support-gallery img,
-    .support-card img {
-      width: 100%;
-      height: 300px;
-      object-fit: contain;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #fff;
-    }
-
-    .support-card:last-child .support-gallery img {
-      height: 270px;
-    }
-
-    footer {
-      padding: 28px 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    #robbyant .project { align-items: start; }
-    #robbyant .project p { color: var(--muted); margin: 10px 0 0; }
-    #robbyant .robbyant-result { align-self: center; padding: 18px 22px; border-left: 4px solid var(--green); background: #f1fbf9; }
-    .robbyant-result strong { display: block; color: #155b52; font-size: clamp(32px, 5vw, 46px); line-height: 1.2; margin: 6px 0; }
-    #robbyant .robbyant-rtc { grid-template-columns: minmax(0, 1fr); }
-    #robbyant video { aspect-ratio: 16 / 9; }
-
-    @media (max-width: 900px) {
-      header { padding-top: 44px; }
-      .project,
-      .support,
-      .support-card,
-      .support-gallery,
-      .media.two {
-        grid-template-columns: 1fr;
-      }
-      .support-gallery img,
-      .support-card img,
-      .support-card:last-child .support-gallery img {
-        height: auto;
-        max-height: none;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap">
-      <p class="eyebrow">Robot Learning Portfolio</p>
-      <h1>Biyu Zou</h1>
-      <p class="lead">
-        Recent M.Sc. graduate in Machine Learning, Systems and Control from Lund University, focused on
-        vision-language-action policies, robot learning data, diffusion and flow-based action generation,
-        and sim-to-real evaluation for real-world manipulation.
-      </p>
-      <p class="seeking">Seeking PhD and research opportunities in robot learning.</p>
-      <div class="contact">
-        <span>Lund, Sweden</span>
-        <span><a href="mailto:zbyblanche610@gmail.com">zbyblanche610@gmail.com</a></span>
-        <span><a href="https://www.linkedin.com/in/biyu-zou-9b44a2331/">LinkedIn</a></span>
-      </div>
-    </div>
-  </header>
-
-  <nav aria-label="Portfolio navigation">
-    <div class="wrap">
-      <a href="#robbyant">Robbyant</a>
-      <a href="#midea">Midea</a>
-      <a href="#hku">HKU</a>
-      <a href="#lund">Lund</a>
-      <a href="#supporting">Supporting</a>
-    </div>
-  </nav>
-
-  <main class="wrap">
-    <section id="robbyant" aria-labelledby="robbyant-title">
-      <h2 id="robbyant-title">Robbyant (Ant Group) — Robot Learning on Hardware</h2>
-      <p class="role">Embodied Intelligence Algorithm Intern · Shanghai, China / Remote · July 2026 – Present</p>
-
-      <article class="project">
-        <div>
-          <h3>Adapting LingBot-VLA to a target robot</h3>
-          <p>Can a policy pretrained on different robots learn the controls of one particular robot? I contributed to multi-task mid-training: converting demonstrations to LeRobot, aligning camera observations with recorded actions, checking trajectories, and adapting the training pipeline.</p>
-          <p>We first compared predicted actions with recorded actions offline. We then ran the policy on hardware, where each action changes what the robot sees next.</p>
-        </div>
-        <div class="robbyant-result">
-          <span class="eyebrow">Mean task success · 10 tasks</span>
-          <strong>17% → 34%</strong>
-          <p>Before and after mid-training on the target robot. Six tasks improved and four were unchanged.</p>
-        </div>
-      </article>
-
-      <article class="project">
-        <div>
-          <h3>Predicting video and actions for dual-arm bowl stacking</h3>
-          <p>LingBot-VA predicts how the scene will change alongside the actions the robot should take. I adapted its post-training and action interface for the AcOne dual-arm robot, from preprocessing demonstrations to running the trained policy in a closed loop.</p>
-        </div>
-        <div class="media">
-          <figure>
-            <video controls playsinline preload="none" poster="media/robbyant/lingbotva_acone_bowl_stacking.jpg" aria-label="AcOne dual-arm bowl stacking with LingBot-VA">
-              <source src="media/robbyant/lingbotva_acone_bowl_stacking.mp4" type="video/mp4">
-              <a href="media/robbyant/lingbotva_acone_bowl_stacking.mp4">Watch the bowl-stacking video</a>
-            </video>
-            <figcaption>LingBot-VA on AcOne. The two arms manipulate and stack bowls on a tabletop.</figcaption>
-          </figure>
-        </div>
-      </article>
-
-      <article class="project robbyant-rtc">
-        <div>
-          <h3>Real-time chunking: keeping the robot moving between predictions</h3>
-          <p>LingBot-VLA generates a short sequence of actions at a time. In synchronous control, the robot finishes one sequence and waits for the next. I adapted training and inference for real-time chunking (RTC), so the controller can prepare the next sequence while the current one is executing.</p>
-          <p class="evaluation"><strong>Measured on hardware:</strong> the wait between action chunks fell from about <strong>137 ms to 0 ms</strong>, with task success unchanged. This measures the pause at handoff; the model still takes time to compute the next chunk.</p>
-        </div>
-        <div class="media two">
-          <figure>
-            <video controls playsinline preload="none" poster="media/robbyant/rtc_sync_vs_original.jpg" aria-label="Real-time chunking and synchronous control compared on the same task">
-              <source src="media/robbyant/rtc_sync_vs_original.mp4" type="video/mp4">
-              <a href="media/robbyant/rtc_sync_vs_original.mp4">Watch the control comparison</a>
-            </video>
-            <figcaption>Same-task comparison at original speed: RTC in the main view, synchronous control in the inset.</figcaption>
-          </figure>
-          <figure>
-            <video controls playsinline preload="none" poster="media/robbyant/rtc_training_demo.jpg" aria-label="Robot executing a policy trained with real-time chunking">
-              <source src="media/robbyant/rtc_training_demo.mp4" type="video/mp4">
-              <a href="media/robbyant/rtc_training_demo.mp4">Watch the RTC rollout</a>
-            </video>
-            <figcaption>A separate real-robot rollout with training-time RTC and asynchronous action execution.</figcaption>
-          </figure>
-        </div>
-      </article>
-    </section>
-
-    <section id="midea">
-      <h2>Midea AI Research Institute - VLA Data and Real-Robot Validation</h2>
-      <article class="project">
-        <div>
-          <h3>Embodied VLA framework for real-world household manipulation</h3>
-          <p class="role">Midea AI Research Institute • Embodied Intelligence Intern • Jun 2025 – Sep 2025</p>
-          <div class="chips">
-            <span class="chip">VLA Policies</span>
-            <span class="chip">Teleoperation</span>
-            <span class="chip">HDF5</span>
-            <span class="chip">Multi-view Vision</span>
-            <span class="chip">DAgger</span>
-          </div>
-          <ul>
-            <li>Co-developed an embodied VLA framework integrating mobile platforms, ARX robotic arms, multi-view cameras, and VR teleoperation for household manipulation.</li>
-            <li>Built a multi-view HDF5 data pipeline aligning RGB observations, language instructions, robot states, and teleoperation trajectories.</li>
-            <li>Fine-tuned PaliGemma-based and pi0-style VLA policies with reasoning-style supervision and stop-gradient training for long-horizon tasks.</li>
-            <li>Implemented DAgger-style online intervention, collecting correction trajectories and improving the real-world task success rate from 65% to 73%.</li>
-          </ul>
-        </div>
-        <div class="media">
-          <figure>
-            <video src="media/robotdemo.mp4" controls preload="metadata"></video>
-            <figcaption>Real-robot garment manipulation demo from the household-task rollout setup.</figcaption>
-          </figure>
-          <div class="media two">
-            <figure>
-              <img src="media/annotation.png" alt="HDF5 annotation tool">
-              <figcaption>HDF5 trajectory inspection and annotation.</figcaption>
-            </figure>
-            <figure>
-              <img src="media/robot.png" alt="Robot learning setup">
-              <figcaption>Physical robot setup for data collection and rollout.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section id="hku">
-      <h2>HKU Agentic Intelligence Lab - Diffusion VLA and RL Alignment</h2>
-      <article class="project">
-        <div>
-          <h3>Negative-aware alignment for diffusion/flow-based VLA policies</h3>
-          <p class="role">HKU Agentic Intelligence Lab • Research Assistant • Oct 2025 – Jan 2026</p>
-          <div class="chips">
-            <span class="chip">Diffusion VLA</span>
-            <span class="chip">Flow Matching</span>
-            <span class="chip">RL Alignment</span>
-            <span class="chip">Positive/Negative Rollouts</span>
-            <span class="chip">LIBERO</span>
-          </div>
-          <ul>
-            <li>Independently explored negative-aware RL alignment for diffusion/flow-based VLA policies, motivated by long-horizon continuous-action instability.</li>
-            <li>Integrated a Flow Matching action head into a Diffusion VLM backbone to build a unified diffusion-style VLA policy for continuous robot action prediction.</li>
-            <li>Implemented a dual-velocity positive/negative alignment objective using successful and failed rollout signals, improving the task success rate from 71% to 84% on a LIBERO manipulation setting.</li>
-          </ul>
-        </div>
-        <div class="media">
-          <figure>
-            <img src="media/discrete-diffusion-naft-workflow.svg" alt="Unified Diffusion VLA via Negative-Aware RL">
-            <figcaption>Method summary for diffusion/flow VLA alignment using positive and negative rollout feedback.</figcaption>
-          </figure>
-        </div>
-      </article>
-    </section>
-
-    <section id="lund">
-      <h2>Lund Robotics Lab - OpenVLA-style Sim-to-Real Adaptation</h2>
-      <article class="project">
-        <div>
-          <h3>Sim-to-real adaptation of OpenVLA-style action-token policies</h3>
-          <p class="role">Lund Robotics Lab • Project Lead • Feb 2025 – May 2025</p>
-          <div class="chips">
-            <span class="chip">OpenVLA</span>
-            <span class="chip">Magma</span>
-            <span class="chip">Visual Target and Motion Annotations</span>
-            <span class="chip">Action Tokenization</span>
-            <span class="chip">LoRA</span>
-            <span class="chip">UR5e</span>
-          </div>
-          <ul>
-            <li>Conducted a sim-to-real study adapting OpenVLA-style action-token policies from LIBERO simulation data to a UR5e real-robot manipulation setup.</li>
-            <li>Implemented a 256-bin action-tokenization pipeline mapping continuous 7D end-effector commands into discrete tokens, followed by LoRA fine-tuning with LIBERO data and 183 real-robot trajectories.</li>
-            <li>Used Set-of-Mark-style visual target annotations and trajectory-based motion cues to organize action-grounded supervision for downstream adaptation.</li>
-            <li>Deployed the policy through ROS 2 with asynchronous inference, achieving 61% success on real-world pick-and-place trials and analyzing discretization errors, inference latency, visual shift, and rollout instability.</li>
-          </ul>
-        </div>
-        <div class="media">
-          <figure>
-            <video src="media/Som.mp4" controls preload="metadata"></video>
-            <figcaption>Set-of-Mark-style marking video: visual targets and motion traces used as action-grounded supervision before downstream fine-tuning.</figcaption>
-          </figure>
-          <figure>
-            <img src="media/openvla-failure-analysis.svg" alt="OpenVLA failure analysis">
-            <figcaption>Qualitative diagnostics from UR5e rollouts.</figcaption>
-          </figure>
-        </div>
-      </article>
-    </section>
-
-    <section id="supporting">
-      <h2>Supporting AI Systems Work</h2>
-      <div class="support">
-        <div class="support-card">
-          <div>
-            <h3>Ericsson - Reliable AI Agent Workflow</h3>
-            <p class="role">Ericsson AB • Master's Thesis Student • Jan 2026 – Jun 2026</p>
-            <p>Router-executor agent with retrieval grounding, tool orchestration, evidence filtering, and human-in-the-loop review.</p>
-          </div>
-          <div class="support-gallery">
-            <img src="media/sparchi.png" alt="Ericsson agent architecture">
-            <img src="media/User_Interface.png" alt="Ericsson agent user interface">
-          </div>
-        </div>
-        <div class="support-card">
-          <div>
-            <h3>XINGTONG - Domain-Specific RAG</h3>
-            <p>Power-domain RAG workflow with chunking, dynamic context windows, terminology filtering, and retrieval-quality improvements.</p>
-          </div>
-          <div class="support-gallery">
-            <img src="media/rag1.png" alt="RAG architecture">
-            <img src="media/rag2.png" alt="RAG demo question">
-            <img src="media/rag3.png" alt="RAG demo retrieval">
-            <img src="media/rag4.png" alt="RAG demo answer">
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      Biyu Zou – Robot Learning Portfolio – Last updated November 2026
-    </div>
-  </footer>
+<p>Power-domain RAG workflow with chunking, dynamic context windows, terminology filtering, and retrieval-quality improvements.</p>
+</div>
+<div class="support-gallery">
+<a aria-label="View full-size image: RAG architecture" class="figure-link" href="media/rag1.png" rel="noopener" target="_blank"><img alt="RAG architecture" decoding="async" loading="lazy" src="media/rag1.png"/></a>
+<a aria-label="View full-size image: RAG demo question" class="figure-link" href="media/rag2.png" rel="noopener" target="_blank"><img alt="RAG demo question" decoding="async" loading="lazy" src="media/rag2.png"/></a>
+<a aria-label="View full-size image: RAG demo retrieval" class="figure-link" href="media/rag3.png" rel="noopener" target="_blank"><img alt="RAG demo retrieval" decoding="async" loading="lazy" src="media/rag3.png"/></a>
+<a aria-label="View full-size image: RAG demo answer" class="figure-link" href="media/rag4.png" rel="noopener" target="_blank"><img alt="RAG demo answer" decoding="async" loading="lazy" src="media/rag4.png"/></a>
+</div>
+</div></details>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><span>Biyu Zou · Robot Learning</span><a href="#top">Back to top ↑</a></div></footer>
 </body>
 </html>
